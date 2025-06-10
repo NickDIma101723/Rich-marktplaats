@@ -80,6 +80,28 @@
   }
 }
 
+@keyframes fadeInCategories {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandCategoriesLine {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 .explore-btn {
   animation: fadeInUp 4.2s ease-out forwards, pulse 2s infinite;
   position: relative;
@@ -191,4 +213,21 @@
 .nav-underline:hover::after {
   opacity: 1;
   transform: scaleX(1);
+}
+
+.categories-fade {
+  opacity: 0;
+  animation: fadeInCategories 1.2s 0.2s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+}
+
+.categories-line {
+  opacity: 0;
+  transform: scaleX(0);
+  animation: expandCategoriesLine 1s 0.7s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+  transform-origin: left;
+}
+
+.categories-browse {
+  opacity: 0;
+  animation: fadeInCategories 1.2s 1.1s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
 }

@@ -17,39 +17,42 @@
     </video>
     <div class="absolute inset-0 bg-black opacity-45 z-10"></div>
     <div class="relative z-20">
-      <nav class="fade-navbar flex items-center justify-between px-20 w-full h-20 pt-3">
-        <div class="flex items-center justify-center">
-          <img class="w-30 h-25" src="./images/Logo aura.svg" alt="Logo">
+      <nav class="fade-navbar w-full flex items-center justify-between px-10 py-4 bg-transparent border-b border-white/60">
+        <div class="flex items-center w-1/4 min-w-[180px]">
+          <img class="w-24 h-16" src="./images/Logo aura.svg" alt="Logo">
         </div>
-        <ul class="flex items-center justify-center space-x-8 text-white text-xl [letter-spacing:0.05em] font-['Montserrat'] font-medium">
-          <li><a href="#" class="nav-underline">SHOP</a></li>
-          <li><a href="#" class="nav-underline">DASHBOARD</a></li>
-          <li><a href="#" class="nav-underline">START SELLING</a></li>
-          <li><a href="#" class="nav-underline">CONTACT</a></li>
+        <ul class="flex items-center gap-12 text-white text-lg font-['Montserrat'] font-medium justify-center w-2/4">
+          <li><a href="#" class="nav-underline transition-colors duration-300 hover:text-white/70">Discover</a></li>
+          <li><a href="#" class="nav-underline transition-colors duration-300 hover:text-white/70">Auctions</a></li>
+          <li><a href="#" class="nav-underline transition-colors duration-300 hover:text-white/70">Sell Luxury</a></li>
+          <li><a href="#" class="nav-underline transition-colors duration-300 hover:text-white/70">Support</a></li>
         </ul>
-        <div class="flex justify-center gap-5">
-          <a href="#"><img class="w-7 h-7" src="./images/heart.png" alt=""></a>
-          <a href="#"><img class="w-7 h-7" src="./images/shopping-bag.png" alt=""></a>
-          <a href="#"><img class="w-7 h-7" src="./images/user (1).png" alt=""></a>
+        <div class="flex items-center gap-8 justify-end w-1/4 min-w-[180px]">
+          <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/heart.png" alt="Wishlist"></a>
+          <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/shopping-bag.png" alt="Cart"></a>
+          <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/user (1).png" alt="User"></a>
         </div>
       </nav>
       <div class="flex flex-col items-center text-center justify-center h-full">
-        <h1 class="fade-left text-white text-2xl opacity-100 mt-10 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal">WELCOME TO THE FUTURE OF LUXURY</h1>
-        <h2 class="aurea-slide text-white text-[7em] font-['Playfair_Display'] ml-10 font-normal [letter-spacing:0.33em] mt-10">AUREA</h2>
-        <h2 class="monsieur-slide text-white text-[7em] font-['Playfair_Display'] font-normal ml-10 [letter-spacing:0.33em] mt-[-2rem]">MARKETPLACE</h2>
-        <hr class="expand-line w-1/5 border-t-2 border-white opacity-100 mt-4 mb-2 mx-auto"/>
-        <h1 class="luxury-blur-focus text-white text-4xl mt-10 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal opacity-100">EXCLUSIVE. ICONIC. YOURS.</h1>
-        <p class="paragraph-blur-focus-1 text-white text-[1.5rem] mt-8 font-['Playfair_Display'] [letter-spacing:0.05em] font-normal opacity-100">Discover, bid, and own the world’s most extraordinary cars, yachts, jets, and timepieces.</p>
-        <p class="paragraph-blur-focus-2 text-white text-[1.4rem] mt-4 font-['Playfair_Display'] [letter-spacing:0.05em] font-normal opacity-100">Aurea connects you to authenticated luxury, curated for the truly discerning.</p>
+        <h1 class="fade-left text-white text-3xl opacity-100 mt-12 mb-6 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal">WELCOME TO THE FUTURE OF LUXURY</h1>
+        <h2 class="aurea-slide text-white text-[7em] font-['Playfair_Display'] ml-10 font-normal [letter-spacing:0.06em] mt-8 mb-1">AUREA</h2>
+        <h2 class="monsieur-slide text-white text-[7em] font-['Playfair_Display'] font-normal ml-10 [letter-spacing:0.06em] mt-[-2rem] mb-5">MARKETPLACE</h2>
+        <hr class="expand-line w-1/5 border-t-2 border-white opacity-100 mt-6 mb-6 mx-auto"/>
+        <h1 class="luxury-blur-focus text-white text-5xl mt-8 mb-8 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal opacity-100">EXCLUSIVE. ICONIC. YOURS.</h1>
         
-        <button class="explore-btn mt-15 px-10 py-4 text-white border border-white text-xl font-['Montserrat'] font-medium backdrop-blur-sm flex items-center justify-center mx-auto gap-2">
-          <span class=" flex [letter-spacing:0.05em] mr-1 text-center">EXPLORE COLLECTION</span>
+        <button class="explore-btn mt-8 px-14 py-6 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-center justify-center mx-auto gap-3">
+          <span class="flex [letter-spacing:0.05em] mr-1 text-center">EXPLORE COLLECTION</span>
           <span class="arrow">→</span>
         </button>
       </div>
     </div>
   </div>
-  <div class="bg-black min-h-[60vh]">
+  <div class="bg-black min-h-[100vh]">
+    <div class="flex items-start justify-start px-10 h-full flex-col">
+      <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade">Categories</h2>
+      <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
+      <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md leading-snug categories-browse">Browse our curated selection of luxury items across exclusive categories</p>
+    </div>
   </div>
 </body>
 </html>
