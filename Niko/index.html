@@ -47,12 +47,24 @@
       </div>
     </div>
   </div>
-  <div class="bg-black min-h-[100vh]">
+  <div class="bg-black min-h-[450vh]">
     <div class="flex items-start justify-start px-10 h-full flex-col">
       <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade">Categories</h2>
       <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
       <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md leading-snug categories-browse">Browse our curated selection of luxury items across exclusive categories</p>
     </div>
+    <div class="flex items-center flex-col justify-center w-full">
+      <div class="flex items-center justify-center w-full group relative overflow-hidden mt-10">
+        <img id="veyronImg" class="w-full h-[45rem] object-cover transition-all duration-500 group-hover:scale-105 z-10" src="./images/Veyron.png" alt="">
+        <video id="veyronVideo" class="absolute top-0 left-0 w-full h-[45rem] object-cover opacity-0 transition-all duration-500 pointer-events-none z-20 bg-black" src="./video/Untitled design (4).mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
+        <div id="veyronOverlay" class="absolute top-0 left-0 w-full h-[45rem] bg-black opacity-0 pointer-events-none z-30 transition-opacity duration-200"></div>
+      </div>
+        <img class="w-full max-w-full h-[45rem] object-cover" src="./images/Yachts.avif" alt="">
+        <img class="w-full max-w-full h-[45rem] object-cover" src="./images/Dolce.png" alt="">
+    </div>
   </div>
+  <script>
+
+</script>
 </body>
 </html>
