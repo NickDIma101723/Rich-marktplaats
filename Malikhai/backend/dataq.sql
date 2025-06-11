@@ -10,3 +10,4 @@ CREATE TABLE [dbo].[Users] (
     CONSTRAINT [UQ_email] UNIQUE ([email]),
     CONSTRAINT [UQ_user_name] UNIQUE ([user_name])
 );
+
