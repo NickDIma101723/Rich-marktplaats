@@ -33,7 +33,7 @@
           <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/user (1).png" alt="User"></a>
         </div>
       </nav>
-      <div class="flex flex-col items-center text-center justify-center h-full">
+      <div class="flex flex-col items-center text-center justify-center h-full fade-in-on-scroll">
         <h1 class="fade-left text-center text-white text-3xl opacity-100 mt-12 mb-6 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal">WELCOME TO THE FUTURE OF LUXURY</h1>
         <h2 class="aurea-slide text-white text-[7em] font-['Playfair_Display'] ml-10 font-normal [letter-spacing:0.06em] mt-8 mb-1">AUREA</h2>
         <h2 class="monsieur-slide text-white text-[7em] font-['Playfair_Display'] font-normal ml-10 [letter-spacing:0.06em] mt-[-2rem] mb-5">MARKETPLACE</h2>
@@ -48,28 +48,32 @@
     </div>
   </div>
   <div class="bg-black min-h-[450vh]">
-    <div class="flex items-start justify-start px-10 h-full flex-col">
+    <div class="flex items-start justify-start px-10 h-full flex-col fade-in-on-scroll">
       <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade">Categories</h2>
       <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
       <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md leading-snug categories-browse">Browse our curated selection of luxury items across exclusive categories</p>
     </div>
-    <div class="flex items-center flex-col mt-10 justify-center w-full">
-    <div class="w-full h-[45rem] relative overflow-hidden group flex flex-col justify-end">
-    <div class="flex flex-col items-start pl-16 pt-16 pb-10 z-40 w-full absolute top-0 left-15">
-    <h2 class="text-white text-[9rem] font-['Montserrat'] [letter-spacing:0.06em] -ml-2 font-bold mb-2 leading-none">01</h2>
-    <h1 class="text-white text-5xl font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none">Luxury Cars</h1>
-    <p class="text-white ml-1 text-3xl mt-5 font-['Montserrat'] [letter-spacing:0.06em] font-bold" >2847 <span class="text-xl ml-10 ">Available Items</span></p>
-    <p class="font-['Montserrat'] text-md mt-5 text-white leading-snug max-w-md [letter-spacing:0.06em] font-bold ">Discover our exclusive collection of premium cars from verified sellers worldwide.</p>
-     <button class="mt-8 px-5 py-5 text-1xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start">
+    <div class="flex items-center flex-col mt-10 justify-center w-full fade-in-on-scroll">
+      <div class="w-full h-[110vh] relative overflow-hidden group flex flex-col justify-end fade-in-on-scroll">
+    <div class="flex flex-col items-start pl-40 pt-24 pb-10 z-40 w-full absolute top-0 left-0 gap-6">
+        <h2 class="text-white text-[9vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">01</h2>
+        <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Luxury Cars</h1>
+        <p class="text-white ml-1 text-5xl mt-8 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">2847 <span class="text-3xl ml-10">Available Items</span></p>
+        <p class="font-['Montserrat'] text-2xl mt-6 text-white leading-snug max-w-2xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium cars from verified sellers worldwide.</p>
+        <button class="mt-10 px-14 py-8 text-3xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700">
           <span class="flex [letter-spacing:0.05em] mr-1 text-center">EXPLORE CARS</span>
         </button>
-  </div>
-  <img id="veyronImg" class="w-full h-[100vh] object-cover transition-all duration-1000 group-hover:scale-105" src="./images/Veyron.png" alt="">
-  <video id="veyronVideo" class="absolute top-0 left-0 w-full h-[100vh] object-cover opacity-0 group-hover:opacity-100 transition-all duration-1000 pointer-events-none group-hover:pointer-events-auto z-30 bg-black" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
-  <div id="veyronOverlay" class="absolute top-0 left-0 w-full h-[100vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500"></div>
+      </div>
+  <img id="veyronImg" class="w-full h-[110vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Veyron.png" alt="">
+  <video id="veyronVideo" class="absolute top-0 left-0 w-full h-[100vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
+  <div id="veyronOverlay" class="absolute top-0 left-0 w-full h-[100vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
 </div>
-<img class="w-full max-w-full h-[100vh] object-cover" src="./images/Yachts.avif" alt="">
-<img class="w-full max-w-full h-[100vh] object-cover" src="./images/Dolce.png" alt="">
+      <div class="w-full h-[100vh] relative overflow-hidden flex flex-col justify-end fade-in-on-scroll">
+        <img class="w-full h-[100vh] object-cover fade-in-on-scroll" src="./images/Yachts (1).png" alt="">
+      </div>
+      <div class="w-full h-[100vh] relative overflow-hidden flex flex-col justify-end fade-in-on-scroll">
+        <img class="w-full h-[100vh] object-cover fade-in-on-scroll" src="./images/Dolce.png" alt="">
+      </div>
     </div>
   </div>
 </body>

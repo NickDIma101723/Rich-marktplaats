@@ -32,9 +32,45 @@ if (veyronGroup && veyronVideo && veyronImg && veyronOverlay) {
   });
 }
 
- document.addEventListener('DOMContentLoaded', function() {
-      const video = document.querySelector('video');
-      if (video) {
-        video.playbackRate = 0.8;
-      }
-    });
+function handleCategoryScrollAnimation() {
+  const animatedEls = document.querySelectorAll('.category-animate');
+  animatedEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < windowHeight * 0.85 && rect.bottom > windowHeight * 0.15) {
+      el.classList.add('category-animate-in');
+    } else {
+      el.classList.remove('category-animate-in');
+    }
+  });
+}
+
+function handleFadeInOnScroll() {
+  const fadeEls = document.querySelectorAll('.fade-in-on-scroll');
+  fadeEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < windowHeight * 0.92 && rect.bottom > windowHeight * 0.08) {
+      el.classList.add('visible');
+    } else {
+      el.classList.remove('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', () => {
+  handleCategoryScrollAnimation();
+  handleFadeInOnScroll();
+});
+window.addEventListener('resize', () => {
+  handleCategoryScrollAnimation();
+  handleFadeInOnScroll();
+});
+document.addEventListener('DOMContentLoaded', () => {
+  handleCategoryScrollAnimation();
+  handleFadeInOnScroll();
+  const video = document.querySelector('video');
+  if (video) {
+    video.playbackRate = 0.8;
+  }
+});
