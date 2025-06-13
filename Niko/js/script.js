@@ -1,8 +1,9 @@
-const veyronGroup = document.querySelector('.group.relative');
+const veyronGroup = document.querySelector('.group.relative, .relative.group');
 const veyronVideo = document.getElementById('veyronVideo');
 const veyronImg = document.getElementById('veyronImg');
 const veyronOverlay = document.getElementById('veyronOverlay');
 let veyronLoaded = false;
+
 if (veyronGroup && veyronVideo && veyronImg && veyronOverlay) {
   veyronGroup.addEventListener('mouseenter', () => {
     if (!veyronLoaded) {
@@ -24,6 +25,7 @@ if (veyronGroup && veyronVideo && veyronImg && veyronOverlay) {
       veyronImg.style.opacity = 0;
     }
   });
+
   veyronGroup.addEventListener('mouseleave', () => {
     veyronVideo.pause();
     veyronVideo.style.opacity = 0;
@@ -52,6 +54,13 @@ function handleFadeInOnScroll() {
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
     if (rect.top < windowHeight * 0.92 && rect.bottom > windowHeight * 0.08) {
       el.classList.add('visible');
+      // Reset inline styles for Bugatti section elements
+      if (el === veyronImg) {
+        veyronImg.style.opacity = 1; // Ensure image is visible by default
+        veyronVideo.style.opacity = 0; // Ensure video is hidden
+        veyronOverlay.style.opacity = 0; // Ensure overlay is hidden
+        veyronVideo.pause(); // Pause video if playing
+      }
     } else {
       el.classList.remove('visible');
     }
@@ -62,10 +71,12 @@ window.addEventListener('scroll', () => {
   handleCategoryScrollAnimation();
   handleFadeInOnScroll();
 });
+
 window.addEventListener('resize', () => {
   handleCategoryScrollAnimation();
   handleFadeInOnScroll();
 });
+
 document.addEventListener('DOMContentLoaded', () => {
   handleCategoryScrollAnimation();
   handleFadeInOnScroll();
