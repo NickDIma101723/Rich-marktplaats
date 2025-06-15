@@ -1,50 +1,75 @@
-const veyronGroup = document.querySelector('.group.relative, .relative.group');
-const veyronVideo = document.getElementById('veyronVideo');
-const veyronImg = document.getElementById('veyronImg');
-const veyronOverlay = document.getElementById('veyronOverlay');
-let veyronLoaded = false;
-let isHovering = false;
+const veyronGroups = document.querySelectorAll('.group.relative, .relative.group');
 
-if (veyronGroup && veyronVideo && veyronImg && veyronOverlay) {
-  veyronGroup.addEventListener('mouseenter', () => {
-    isHovering = true;
-    if (!veyronLoaded) {
+veyronGroups.forEach(veyronGroup => {
+  const veyronVideo = veyronGroup.querySelector('.category-video');
+  const veyronImg = veyronGroup.querySelector('.category-img');
+  const veyronOverlay = veyronGroup.querySelector('.category-overlay');
+  let veyronLoaded = false;
+  let isHovering = false;
+
+  if (veyronVideo && veyronImg && veyronOverlay) {
+    veyronGroup.addEventListener('mouseenter', () => {
+      isHovering = true;
       veyronOverlay.style.opacity = 0.7;
-      veyronVideo.load();
-      veyronLoaded = true;
-      veyronVideo.addEventListener('canplay', function handler() {
-        veyronOverlay.style.opacity = 0;
+      if (!veyronLoaded) {
+        veyronVideo.load();
+        veyronLoaded = true;
+        veyronVideo.addEventListener('canplay', function handler() {
+          veyronOverlay.style.opacity = 0;
+          veyronVideo.currentTime = 0;
+          veyronVideo.play();
+          veyronVideo.style.opacity = 1;
+          veyronImg.style.opacity = 0;
+          veyronVideo.removeEventListener('canplay', handler);
+        });
+      } else {
         veyronVideo.currentTime = 0;
         veyronVideo.play();
         veyronVideo.style.opacity = 1;
         veyronImg.style.opacity = 0;
-        veyronVideo.removeEventListener('canplay', handler);
-      });
+        veyronOverlay.style.opacity = 0;
+      }
+    });
+
+    veyronGroup.addEventListener('mouseleave', () => {
+      isHovering = false;
+      veyronVideo.pause();
+      veyronVideo.style.opacity = 0;
+      veyronImg.style.opacity = 1;
+      veyronOverlay.style.opacity = 0;
+    });
+
+    veyronVideo.addEventListener('error', () => {
+      veyronImg.style.opacity = 1;
+      veyronVideo.style.opacity = 0;
+      veyronOverlay.style.opacity = 0;
+      isHovering = false;
+    });
+  }
+});
+
+// Fade-in on scroll logic for all fade-in elements
+function handleFadeInOnScroll() {
+  const fadeEls = document.querySelectorAll('.fade-in-on-scroll');
+  fadeEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+      el.classList.add('visible');
     } else {
-      veyronVideo.currentTime = 0;
-      veyronVideo.play();
-      veyronVideo.style.opacity = 1;
-      veyronImg.style.opacity = 0;
+      el.classList.remove('visible');
+      // Optionally reset opacity if not being hovered
+      const parentSection = el.closest('.group.relative, .relative.group');
+      if (parentSection && !parentSection.matches(':hover')) {
+        if (el.classList.contains('category-img')) el.style.opacity = 1;
+        if (el.classList.contains('category-video')) el.style.opacity = 0;
+        if (el.classList.contains('category-overlay')) el.style.opacity = 0;
+      }
     }
-  });
-
-  veyronGroup.addEventListener('mouseleave', () => {
-    isHovering = false;
-    veyronVideo.pause();
-    veyronVideo.style.opacity = 0;
-    veyronImg.style.opacity = 1;
-    veyronOverlay.style.opacity = 0;
-  });
-
-  // Fallback for video errors
-  veyronVideo.addEventListener('error', () => {
-    veyronImg.style.opacity = 1;
-    veyronVideo.style.opacity = 0;
-    veyronOverlay.style.opacity = 0;
-    isHovering = false;
   });
 }
 
+// Animation logic for category-animate elements
 function handleCategoryScrollAnimation() {
   const animatedEls = document.querySelectorAll('.category-animate');
   animatedEls.forEach(el => {
@@ -58,31 +83,7 @@ function handleCategoryScrollAnimation() {
   });
 }
 
-function handleFadeInOnScroll() {
-  const fadeEls = document.querySelectorAll('.fade-in-on-scroll');
-  fadeEls.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
-      el.classList.add('visible');
-      if (el.id === 'veyronImg' && !isHovering) {
-        // Use setTimeout to stabilize transitions
-        setTimeout(() => {
-          if (!isHovering) { // Double-check hover state
-            document.getElementById('veyronImg').style.opacity = 1;
-            document.getElementById('veyronVideo').style.opacity = 0;
-            document.getElementById('veyronVideo').pause();
-            document.getElementById('veyronOverlay').style.opacity = 0;
-          }
-        }, 100);
-      }
-    } else {
-      el.classList.remove('visible');
-    }
-  });
-}
-
-// Debounce scroll for smoother performance
+// Debounce helper
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -95,6 +96,7 @@ function debounce(func, wait) {
   };
 }
 
+// Event listeners
 window.addEventListener('scroll', debounce(() => {
   handleCategoryScrollAnimation();
   handleFadeInOnScroll();
