@@ -1,75 +1,74 @@
-const veyronGroups = document.querySelectorAll('.group.relative, .relative.group');
+const categoryGroups = document.querySelectorAll('.group.relative, .relative.group');
 
-veyronGroups.forEach(veyronGroup => {
-  const veyronVideo = veyronGroup.querySelector('.category-video');
-  const veyronImg = veyronGroup.querySelector('.category-img');
-  const veyronOverlay = veyronGroup.querySelector('.category-overlay');
-  let veyronLoaded = false;
+categoryGroups.forEach(categoryGroup => {
+  const categoryVideo = categoryGroup.querySelector('.category-video');
+  const categoryImg = categoryGroup.querySelector('.category-img');
+  const categoryOverlay = categoryGroup.querySelector('.category-overlay');
+  let categoryLoaded = false;
   let isHovering = false;
+  if (categoryImg) {
+    categoryImg.style.opacity = 1;
+    categoryImg.style.transition = 'opacity 3s cubic-bezier(0.4,0,0.2,1)';
+  }
+  if (categoryVideo) {
+    categoryVideo.style.opacity = 0;
+    categoryVideo.style.transition = 'opacity 3s cubic-bezier(0.4,0,0.2,1)';
+  }
+  if (categoryOverlay) categoryOverlay.style.opacity = 0;
 
-  if (veyronVideo && veyronImg && veyronOverlay) {
-    veyronGroup.addEventListener('mouseenter', () => {
+  if (categoryVideo && categoryImg && categoryOverlay) {
+    categoryGroup.addEventListener('mouseenter', () => {
       isHovering = true;
-      veyronOverlay.style.opacity = 0.7;
-      if (!veyronLoaded) {
-        veyronVideo.load();
-        veyronLoaded = true;
-        veyronVideo.addEventListener('canplay', function handler() {
-          veyronOverlay.style.opacity = 0;
-          veyronVideo.currentTime = 0;
-          veyronVideo.play();
-          veyronVideo.style.opacity = 1;
-          veyronImg.style.opacity = 0;
-          veyronVideo.removeEventListener('canplay', handler);
+      categoryOverlay.style.opacity = 0.7;
+      if (!categoryLoaded) {
+        categoryVideo.load();
+        categoryLoaded = true;
+        categoryVideo.addEventListener('canplay', function handler() {
+          categoryOverlay.style.opacity = 0;
+          categoryVideo.currentTime = 0;
+          categoryVideo.play();
+          categoryVideo.style.opacity = 1;
+          categoryImg.style.opacity = 0;
+          categoryVideo.removeEventListener('canplay', handler);
         });
       } else {
-        veyronVideo.currentTime = 0;
-        veyronVideo.play();
-        veyronVideo.style.opacity = 1;
-        veyronImg.style.opacity = 0;
-        veyronOverlay.style.opacity = 0;
+        categoryVideo.currentTime = 0;
+        categoryVideo.play();
+        categoryVideo.style.opacity = 1;
+        categoryImg.style.opacity = 0;
+        categoryOverlay.style.opacity = 0;
       }
     });
 
-    veyronGroup.addEventListener('mouseleave', () => {
+    categoryGroup.addEventListener('mouseleave', () => {
       isHovering = false;
-      veyronVideo.pause();
-      veyronVideo.style.opacity = 0;
-      veyronImg.style.opacity = 1;
-      veyronOverlay.style.opacity = 0;
+      categoryVideo.pause();
+      categoryVideo.style.opacity = 0;
+      categoryImg.style.opacity = 1;
+      categoryOverlay.style.opacity = 0;
     });
 
-    veyronVideo.addEventListener('error', () => {
-      veyronImg.style.opacity = 1;
-      veyronVideo.style.opacity = 0;
-      veyronOverlay.style.opacity = 0;
+    categoryVideo.addEventListener('error', () => {
+      categoryImg.style.opacity = 1;
+      categoryVideo.style.opacity = 0;
+      categoryOverlay.style.opacity = 0;
       isHovering = false;
     });
   }
 });
 
-// Fade-in on scroll logic for all fade-in elements
 function handleFadeInOnScroll() {
   const fadeEls = document.querySelectorAll('.fade-in-on-scroll');
   fadeEls.forEach(el => {
     const rect = el.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+    if (rect.top < windowHeight && rect.bottom > 0) {
       el.classList.add('visible');
     } else {
       el.classList.remove('visible');
-      // Optionally reset opacity if not being hovered
-      const parentSection = el.closest('.group.relative, .relative.group');
-      if (parentSection && !parentSection.matches(':hover')) {
-        if (el.classList.contains('category-img')) el.style.opacity = 1;
-        if (el.classList.contains('category-video')) el.style.opacity = 0;
-        if (el.classList.contains('category-overlay')) el.style.opacity = 0;
-      }
     }
   });
 }
-
-// Animation logic for category-animate elements
 function handleCategoryScrollAnimation() {
   const animatedEls = document.querySelectorAll('.category-animate');
   animatedEls.forEach(el => {
@@ -83,7 +82,6 @@ function handleCategoryScrollAnimation() {
   });
 }
 
-// Debounce helper
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -96,7 +94,6 @@ function debounce(func, wait) {
   };
 }
 
-// Event listeners
 window.addEventListener('scroll', debounce(() => {
   handleCategoryScrollAnimation();
   handleFadeInOnScroll();
