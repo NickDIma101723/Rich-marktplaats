@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>AUREA MONSIEUR</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="./js/script.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="./images/Logo aura.svg">
 </head>
 <body class="relative min-h-screen">
   <!-- Hero Section -->
@@ -31,7 +32,9 @@
         </ul>
         <div class="flex items-center gap-8 justify-end w-1/4 min-w-[180px]">
           <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/heart.png" alt="Wishlist"></a>
-          <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/shopping-bag.png" alt="Cart"></a>
+          <a href="#" id="open-cart">
+            <img class="w-7 h-7 transition-transform duration-300 hover:scale-110 cursor-pointer" src="./images/shopping-bag.png" alt="Cart">
+          </a>
           <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/user (1).png" alt="User"></a>
         </div>
       </nav>
@@ -42,7 +45,7 @@
         <h2 class="monsieur-slide text-white text-[7em] font-['Playfair_Display'] font-normal ml-10 [letter-spacing:0.06em] mt-[-2rem] mb-5">MARKETPLACE</h2>
         <hr class="expand-line w-1/5 border-t-2 border-white opacity-100 mt-6 mb-6 mx-auto"/>
         <h1 class="luxury-blur-focus text-white text-5xl mt-8 mb-8 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal opacity-100">EXCLUSIVE. ICONIC. YOURS.</h1>
-        <button class="explore-btn mt-3 px-4 py-6 text-2xl text-white border border-white font-['Montserrat'] font-medium backdrop-blur-sm flex items-center justify-center mx-auto gap-3">
+        <button class="explore-btn mt-3 px-4 py-6 text-2xl text-white border border-white font-['Montserrat'] font-medium backdrop-blur-sm flex items-center justify-center mx-auto gap-3 cursor-pointer active:cursor-wait">
           <span class="flex [letter-spacing:0.05em] text-center">EXPLORE COLLECTION</span>
           <span class="arrow">→</span>
         </button>
@@ -57,7 +60,7 @@
   </div>
 
   <!-- Categories Section -->
-  <div class="bg-black min-h-[450vh]">
+  <div class="bg-black min-h-[650vh]">
     <div class="flex items-start justify-start px-10 h-full flex-col fade-in-on-scroll">
       <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade">Categories</h2>
       <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
@@ -71,7 +74,7 @@
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Luxury Cars</h1>
           <p class="text-white ml-1 text-5xl mt-8 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">2,847 <span class="text-3xl ml-10">Available Items</span></p>
           <p class="font-['Montserrat'] text-2xl mt-6 text-white leading-snug max-w-2xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium cars from verified sellers worldwide.</p>
-          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700">
+          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE CARS</span>
           </button>
         </div>
@@ -88,7 +91,7 @@
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Luxury Yachts</h1>
           <p class="text-white ml-1 text-5xl mt-8 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">1,718 <span class="text-3xl ml-10">Available Items</span></p>
           <p class="font-['Montserrat'] text-2xl mt-6 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium yachts from verified sellers worldwide.</p>
-          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700">
+          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE YACHTS</span>
           </button>
         </div>
@@ -105,7 +108,7 @@
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Luxury Accesories</h1>
           <p class="text-white ml-1 text-5xl mt-8 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">3,286 <span class="text-3xl ml-10">Available Items</span></p>
           <p class="font-['Montserrat'] text-2xl mt-6 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium accesories from verified sellers worldwide.</p>
-          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700">
+          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE ACCESORIES</span>
           </button>
         </div>
@@ -121,14 +124,57 @@
           <h2 class="text-white text-[8vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">04</h2>
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Luxury Planes</h1>
           <p class="text-white ml-1 text-5xl mt-8 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">2,147 <span class="text-3xl ml-10">Available Items</span></p>
-          <p class="font-['Montserrat'] text-2xl mt-6 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium planes from verified sellers worldwide.</p>
-          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700">
+          <p class="font-['Montserrat'] text-2xl mt-6 text-white [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium planes from verified sellers worldwide.</p>
+          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE PLANES</span>
           </button>
         </div>
         <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Airbrush-Image-Enhancer-1750026042060.jpeg" alt="">
         <video class="category-video absolute top-0 left-0 w-full h-[105vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
         <div class="category-overlay absolute top-0 left-0 w-full h-[105vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
+      </div>
+    </div>
+    <!-- Hottest Bids -->
+<div class="flex items-start justify-center px-10 h-full flex-col fade-in-on-scroll">
+  <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade">Hottest Bids</h2>
+  <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
+  <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md leading-snug categories-browse">See the most popular luxury items currently being bid on by our community.</p>
+  <div class="flex flex-wrap gap-12 mt-2">
+    <div class="w-full flex justify-center">
+      <div class="flex flex-col ml-40 justify-center shadow-lg category-animate opacity-0 transition-all duration-700 mt-8 relative overflow-hidden">
+        <span class="absolute top-6 left-8 z-20 flex flex-col items-start">
+          <span class="bg-white text-black text-xs font-semibold px-4 py-3 rounded-md tracking-widest uppercase mb-1 shadow-g">Trending Now</span>
+        </span>
+        <button class="absolute top-6 right-8 z-20 border border-white/40 shadow-lg cursor-pointer w-14 h-14 flex items-center justify-center transition backdrop-blur-md">
+          <img src="./images/heart.png" alt="Wishlist" class="w-7 h-7 mt-1 ">
+        </button>
+        <img class="w-[160vh] h-[75vh] object-cover rounded-md" src="./images/image copy 2.png" alt="">
+        <div class="absolute inset-0 bg-black/40 rounded-md pointer-events-none"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Cart Overlay -->
+  <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-40 hidden transition-opacity duration-300"></div>
+
+ 
+  <div id="sidebar-cart" class="fixed top-0 right-0 h-full w-full max-w-md bg-black z-50 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-row overflow-hidden">
+  
+    <div class="flex justify-center items-center flex-col flex-grow min-h-0 w-full">
+      <div class="flex justify-between items-center p-6 border-b border-white w-full">
+        <h2 class="text-2xl font-semibold text-white tracking-wide font-['Montserrat']">CART</h2>
+      </div>
+      <div class="p-6 overflow-y-auto flex flex-col justify-center items-center gap-4 w-full grow min-h-0" id="cart-items">
+        <div class="flex flex-col items-start h-full">
+          <p class="text-base mt-3 text-white font-['Montserrat'] text-[2.9rem] leading-snug max-w-3xl text-left">Your cart is empty</p>
+        </div>
+      </div>
+      <div class="p-6 border-t border-white flex items-center mb-3 justify-center w-full">
+        <button class="mt-2 cart-btn px-12 py-5 border border-white bg-black font-['Montserrat'] font-semibold flex items-center justify-start mx-auto transition-all duration-700 relative overflow-hidden gap-8 cursor-pointer active:cursor-wait">
+            <span class="cart-btn-text flex text-xs tracking-wide">CHECK OUT</span>
+            <span class="arrow ml-8 text-xl text-white mb-1 justify-center relative z-10">→</span>
+          </button>
       </div>
     </div>
   </div>
