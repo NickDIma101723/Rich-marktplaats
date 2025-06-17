@@ -46,12 +46,10 @@
 }
 
 
-/* ========== Base Styles ========== */
 html { scroll-behavior: smooth; }
 ::-webkit-scrollbar { display: none; }
 * { scrollbar-width: none; -ms-overflow-style: none; }
 
-/* ========== Fade In On Scroll ========== */
 .fade-in-on-scroll {
   opacity: 0;
   transform: translateY(18px);
@@ -63,7 +61,6 @@ html { scroll-behavior: smooth; }
   transform: none;
 }
 
-/* ========== Button Styles ========== */
 .explore-btn {
   animation: fadeInUp 4.2s ease-out forwards, pulse 2s infinite;
   position: relative;
@@ -101,7 +98,6 @@ html { scroll-behavior: smooth; }
 }
 
 
-/* ========== Navbar & Headings ========== */
 .fade-navbar { animation: fadeInDown 1.2s ease-out forwards; }
 .fade-left { animation: fadeLeft 1.2s ease-out forwards; }
 .expand-line { animation: expandLine 1s ease-out forwards; transform-origin: center; }
@@ -130,8 +126,6 @@ html { scroll-behavior: smooth; }
   animation: blurToFocus 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   animation-delay: 2.6s;
 }
-
-/* ========== Nav Underline ========== */
 .nav-underline {
   position: relative;
   display: inline-block;
@@ -154,7 +148,6 @@ html { scroll-behavior: smooth; }
   transform: scaleX(1);
 }
 
-/* ========== Categories ========== */
 .categories-fade {
   opacity: 0;
   animation: fadeInCategories 1.2s 0.2s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
@@ -177,11 +170,6 @@ html { scroll-behavior: smooth; }
 .category-animate.category-animate-in {
   opacity: 1;
   transform: translateX(0);
-}
-
-/* ========== Hottest Bids ========== */
-.hottest-bids-section {
-  /* Same fade-in as categories */
 }
 .hottest-bids-fade {
   opacity: 0;
@@ -207,7 +195,6 @@ html { scroll-behavior: smooth; }
   transform: translateX(0);
 }
 
-/* ========== Scroll Mouse Cue ========== */
 .scroll-cue.fade-in-on-scroll {
   opacity: 0;
   transform: translateY(50px);
@@ -264,7 +251,7 @@ html { scroll-behavior: smooth; }
 }
 .cart-btn:hover::before { left: 0; }
 .cart-btn:hover {
-  /* Remove color: black here to avoid inherited color issues */
+ 
 }
 .cart-btn-text {
   font-size: 0.95rem;
@@ -280,7 +267,7 @@ html { scroll-behavior: smooth; }
 }
 .cart-btn:hover .cart-btn-text {
   color: #181818;
-  font-weight: 500; /* Ensure font-weight does not change */
+  font-weight: 500; 
 }
 .cart-btn .arrow {
   display: inline-block;

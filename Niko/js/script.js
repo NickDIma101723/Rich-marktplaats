@@ -168,3 +168,89 @@ function addCursorClickEffect() {
 }
 
 window.addEventListener('DOMContentLoaded', addCursorClickEffect);
+
+// Popup for favoriting
+function showFavoritePopup(message) {
+  let popup = document.getElementById('favorite-popup');
+  if (!popup) {
+    popup = document.createElement('div');
+    popup.id = 'favorite-popup';
+    popup.innerHTML = `
+      <span style="display:inline-flex;align-items:center;gap:0.7rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.78-7-12A5 5 0 0 1 12 4a5 5 0 0 1 7 5c0 7.22-7 12-7 12Z" fill="#fff" stroke="#fff" stroke-width="1.2"/></svg>
+        <span style="font-weight:500;font-size:1rem;letter-spacing:0.01em;">${message}</span>
+      </span>
+    `;
+    popup.style.position = 'fixed';
+    popup.style.bottom = '48px';
+    popup.style.left = '50%';
+    popup.style.top = '';
+    popup.style.transform = 'translateX(-50%)';
+    popup.style.background = 'rgba(24,24,24,0.82)';
+    popup.style.color = '#fff';
+    popup.style.padding = '0.7rem 1.6rem';
+    popup.style.borderRadius = '1.2rem';
+    popup.style.fontFamily = 'Montserrat, sans-serif';
+    popup.style.boxShadow = '0 4px 18px 0 rgba(0,0,0,0.13)';
+    popup.style.zIndex = '9999';
+    popup.style.opacity = '0';
+    popup.style.transition = 'opacity 0.3s cubic-bezier(0.4,0,0.2,1), bottom 0.4s cubic-bezier(0.4,0,0.2,1)';
+    popup.style.backdropFilter = 'blur(3px)';
+    document.body.appendChild(popup);
+  }
+  popup.style.opacity = '1';
+  popup.style.bottom = '80px';
+  setTimeout(() => {
+    popup.style.opacity = '0';
+    popup.style.bottom = '48px';
+  }, 900);
+}
+
+function updateNavbarHeartCount(count) {
+  let navHeartBtn = document.querySelector('nav .flex.items-center.gap-6 > button');
+  if (!navHeartBtn) return;
+  let badge = navHeartBtn.querySelector('.fav-badge');
+  if (!badge) {
+    badge = document.createElement('span');
+    badge.className = 'fav-badge';
+    badge.style.position = 'absolute';
+    badge.style.top = '0px';
+    badge.style.right = '0px';
+    badge.style.background = '#fff';
+    badge.style.color = '#181818';
+    badge.style.fontSize = '0.82rem';
+    badge.style.fontWeight = '600';
+    badge.style.padding = '0.08em 0.48em';
+    badge.style.borderRadius = '999px';
+    badge.style.boxShadow = '0 1px 4px 0 rgba(0,0,0,0.10)';
+    badge.style.zIndex = '10';
+    badge.style.lineHeight = '1.1';
+    navHeartBtn.style.position = 'relative';
+    navHeartBtn.appendChild(badge);
+  }
+  badge.textContent = count > 99 ? '99+' : count;
+  badge.style.display = count > 0 ? 'inline-block' : 'none';
+}
+
+let favCount = 0;
+function setupHeartButtons() {
+  const navHeartBtn = document.querySelector('nav .flex.items-center.gap-6 > button');
+  document.querySelectorAll('button').forEach(btn => {
+    // Only add to count if it's a heart button NOT in the navbar
+    if (
+      btn.querySelector('svg') &&
+      btn.querySelector('svg path[d*="M21 8.25"]') &&
+      btn !== navHeartBtn
+    ) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        favCount++;
+        updateNavbarHeartCount(favCount);
+        showFavoritePopup('This item has been added to your favourites');
+      });
+    }
+  });
+  updateNavbarHeartCount(favCount);
+}
+
+document.addEventListener('DOMContentLoaded', setupHeartButtons);

@@ -12,36 +12,48 @@
   <link rel="icon" type="image/svg+xml" href="./images/Logo aura.svg">
 </head>
 <body class="relative min-h-screen">
-  <!-- Hero Section -->
+  <!-- ================= NAVBAR & HERO ================= -->
   <div class="relative w-full h-screen">
-    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0" preload="none">
       <source src="./video/Monsieur.mp4" type="video/mp4">
     </video>
     <div class="absolute inset-0 bg-black opacity-45 z-10"></div>
     <div class="relative z-20">
       <!-- Navbar -->
-      <nav class="fade-navbar w-full flex items-center justify-between px-10 py-4 bg-transparent border-b border-white/60">
-        <div class="flex items-center w-1/4 min-w-[180px]">
-          <img class="w-26 h-18" src="./images/Logo aura.svg" alt="Logo">
-        </div>
-        <ul class="flex items-center gap-12 text-white text-lg font-['Montserrat'] font-medium justify-center w-2/4">
-          <li><a href="#" class="nav-underline transition-colors duration-300 hover:text-white/70">Discover</a></li>
-          <li><a href="#" class="nav-underline transition-colors duration-300 hover:text-white/70">Auctions</a></li>
-          <li><a href="#" class="nav-underline transition-colors duration-300 hover:text-white/70">Sell Luxury</a></li>
-          <li><a href="#" class="nav-underline transition-colors duration-300 hover:text-white/70">Support</a></li>
-        </ul>
-        <div class="flex items-center gap-8 justify-end w-1/4 min-w-[180px]">
-          <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/heart.png" alt="Wishlist"></a>
-          <a href="#" id="open-cart">
-            <img class="w-7 h-7 transition-transform duration-300 hover:scale-110 cursor-pointer" src="./images/shopping-bag.png" alt="Cart">
-          </a>
-          <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/user (1).png" alt="User"></a>
+      <nav class="fade-navbar absolute top-8 left-1/2 transform -translate-x-1/2 w-[90%] max-w-7xl">
+        <div class="flex items-center justify-between bg-black/20 backdrop-blur-sm border border-white/35 rounded-full px-8 py-4 shadow-2xl">
+          <div class="flex items-center">
+            <img class="w-24 h-16 object-contain transition-transform duration-500 hover:scale-110" src="./images/Logo aura.svg" alt="AUREA" loading="lazy">
+          </div>
+          <div class="flex items-center gap-12">
+            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400">DISCOVER</a>
+            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400">AUCTIONS</a>
+            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400">SELL LUXURY</a>
+            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400">SUPPORT</a>
+          </div>
+          <div class="flex items-center gap-6">
+            <button class="group relative w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-125">
+              <svg class="w-5 h-5 text-white transition-all duration-300 group-hover:text-red-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
+              </svg>
+            </button>
+            <button class="group relative w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-125" id="open-cart">
+              <svg class="w-5 h-5 text-white transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993z"/>
+              </svg>
+            </button>
+            <button class="group relative w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-125">
+              <svg class="w-5 h-5 text-white transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+              </svg>
+            </button>
+          </div>
         </div>
       </nav>
-      <!-- Hero Content -->
-      <div class="flex flex-col items-center text-center justify-center h-full fade-in-on-scroll">
-        <h1 class="fade-left text-center text-white text-3xl opacity-100 mt-12 mb-6 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal">WELCOME TO THE FUTURE OF LUXURY</h1>
-        <h2 class="aurea-slide text-white text-[7em] font-['Playfair_Display'] ml-10 font-normal [letter-spacing:0.06em] mt-6 mb-1">AUREA</h2>
+      <!-- Hero Section -->
+      <div class="flex flex-col items-center text-center justify-center h-full fade-in-on-scroll pt-30">
+        <h1 class="fade-left text-center text-white text-3xl opacity-100 mt-12 mb-4 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal">WELCOME TO THE FUTURE OF LUXURY</h1>
+        <h2 class="aurea-slide text-white text-[7em] font-['Playfair_Display'] ml-10 font-normal [letter-spacing:0.06em] mt-3 mb-1">AUREA</h2>
         <h2 class="monsieur-slide text-white text-[7em] font-['Playfair_Display'] font-normal ml-10 [letter-spacing:0.06em] mt-[-2rem] mb-5">MARKETPLACE</h2>
         <hr class="expand-line w-1/5 border-t-2 border-white opacity-100 mt-6 mb-6 mx-auto"/>
         <h1 class="luxury-blur-focus text-white text-5xl mt-8 mb-8 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal opacity-100">EXCLUSIVE. ICONIC. YOURS.</h1>
@@ -59,14 +71,14 @@
     <div class="scroll-hint-luxury"></div>
   </div>
 
-  <!-- Categories Section -->
+  <!-- ================= CATEGORIES ================= -->
   <div class="bg-black min-h-[650vh]">
     <div class="flex items-start justify-start px-10 h-full flex-col fade-in-on-scroll">
       <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade">Categories</h2>
       <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
       <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md leading-snug categories-browse">Browse our curated selection of luxury items across exclusive categories</p>
     </div>
-    <!-- Category 1 -->
+    <!-- Category 1: Cars -->
     <div class="flex items-center flex-col mt-8 justify-center w-full fade-in-on-scroll">
       <div class="w-full h-[105vh] relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll">
         <div class="flex flex-col items-start pl-33 pt-30 pb-10 z-40 w-full absolute top-0 left-0 gap-6">
@@ -78,12 +90,12 @@
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE CARS</span>
           </button>
         </div>
-        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Veyron.png" alt="">
+        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Veyron.png" alt="" loading="lazy">
         <video class="category-video absolute top-0 left-0 w-full h-[105vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
         <div class="category-overlay absolute top-0 left-0 w-full h-[105vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
       </div>
     </div>
-    <!-- Category 2 -->
+    <!-- Category 2: Yachts -->
     <div class="flex items-center flex-col justify-center w-full fade-in-on-scroll">
       <div class="w-full h-[105vh] relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll">
         <div class="flex flex-col items-end text-end pl-30 pt-30 pb-10 z-40 w-full absolute top-0 left-6 gap-6">
@@ -95,12 +107,12 @@
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE YACHTS</span>
           </button>
         </div>
-        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Airbrush-Image-Enhancer-1750020637163.jpeg" alt="">
+        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Airbrush-Image-Enhancer-1750020637163.jpeg" alt="" loading="lazy">
         <video class="category-video absolute top-0 left-0 w-full h-[105vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
         <div class="category-overlay absolute top-0 left-0 w-full h-[105vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
       </div>
     </div>
-    <!-- Category 3 -->
+    <!-- Category 3: Accessories -->
     <div class="flex items-center flex-col justify-center w-full fade-in-on-scroll">
       <div class="w-full h-[105vh] relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll">
         <div class="flex flex-col items-start pl-33 pt-30 pb-10 z-40 w-full absolute top-0 left-0 gap-6">
@@ -112,12 +124,12 @@
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE ACCESORIES</span>
           </button>
         </div>
-        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Dolce.png" alt="">
+        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Dolce.png" alt="" loading="lazy">
         <video class="category-video absolute top-0 left-0 w-full h-[105vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
         <div class="category-overlay absolute top-0 left-0 w-full h-[105vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
       </div>
     </div>
-    <!-- Category 4 -->
+    <!-- Category 4: Planes -->
     <div class="flex items-center flex-col justify-center w-full fade-in-on-scroll">
       <div class="w-full h-[105vh] text-end relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll">
         <div class="flex flex-col items-end pl-40 pt-30 pb-10 z-40 w-full absolute top-0 left-0 gap-6">
@@ -129,52 +141,83 @@
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE PLANES</span>
           </button>
         </div>
-        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Airbrush-Image-Enhancer-1750026042060.jpeg" alt="">
+        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Airbrush-Image-Enhancer-1750026042060.jpeg" alt="" loading="lazy">
         <video class="category-video absolute top-0 left-0 w-full h-[105vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
         <div class="category-overlay absolute top-0 left-0 w-full h-[105vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
       </div>
     </div>
-    <!-- Hottest Bids -->
-<div class="flex items-start justify-center px-10 h-full flex-col fade-in-on-scroll">
-  <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade">Hottest Bids</h2>
-  <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
-  <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md leading-snug categories-browse">See the most popular luxury items currently being bid on by our community.</p>
-  <div class="flex flex-wrap gap-12 mt-2">
-    <div class="w-full flex justify-center">
-      <div class="flex flex-col ml-40 justify-center shadow-lg category-animate opacity-0 transition-all duration-700 mt-8 relative overflow-hidden">
-        <span class="absolute top-6 left-8 z-20 flex flex-col items-start">
-          <span class="bg-white text-black text-xs font-semibold px-4 py-3 rounded-md tracking-widest uppercase mb-1 shadow-g">Trending Now</span>
-        </span>
-        <button class="absolute top-6 right-8 z-20 border border-white/40 shadow-lg cursor-pointer w-14 h-14 flex items-center justify-center transition backdrop-blur-md">
-          <img src="./images/heart.png" alt="Wishlist" class="w-7 h-7 mt-1 ">
-        </button>
-        <img class="w-[160vh] h-[75vh] object-cover rounded-md" src="./images/image copy 2.png" alt="">
-        <div class="absolute inset-0 bg-black/40 rounded-md pointer-events-none"></div>
+
+    <!-- ================= HOTTEST BIDS ================= -->
+    <div class="flex items-start justify-center px-10 h-full flex-col fade-in-on-scroll">
+      <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade">Hottest Bids</h2>
+      <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
+      <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md leading-snug categories-browse">See the most popular luxury items currently being bid on by our community.</p>
+      <div class="flex flex-wrap gap-12 mt-2">
+        <div class="w-full flex justify-center">
+          <div class="flex flex-col ml-40 justify-center shadow-lg category-animate opacity-0 transition-all duration-700 mt-8 relative overflow-hidden">
+            <!-- Clean Status Bar -->
+            <span class="absolute top-6 left-8 z-20 flex flex-row items-center gap-4">
+              <span class="flex items-center justify-center bg-white/95 text-black text-xs font-bold px-6 py-3 rounded-full uppercase shadow-lg backdrop-blur-sm">Trending Now</span>
+              <span class="flex items-center justify-center bg-black/40 text-white text-xs font-semibold px-6 py-3 rounded-full uppercase shadow-lg backdrop-blur-lg border border-white/20">2h 45m Left</span>
+            </span>
+            <div class="flex flex-row items-center h-full w-full absolute top-0 left-0">
+              <div class="flex flex-col justify-center h-full pl-14 mt-67 z-30">
+                <h1 class="text-white text-5xl font-bold font-['Montserrat'] leading-snug drop-shadow-lg">2024 Bugatti Chiron <span class="whitespace-nowrap">Super</span><br> Sport</h1>
+                <!-- Clean Bid Information -->
+                <div class="flex flex-row gap-8 mt-10">
+                  <div class="flex flex-col bg-white/5 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/10">
+                    <span class="text-white/80 text-sm text-center font-medium uppercase tracking-wide mb-1">Current Bid</span>
+                    <span class="text-white text-center text-3xl font-bold">$13.2M</span>
+                  </div>
+                  <div class="flex flex-col bg-black/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/5">
+                    <span class="text-white/80 text-sm font-medium uppercase tracking-wide mb-1">Starting Bid</span>
+                    <span class="text-white/60 text-2xl text-center font-bold line-through">$2.8M</span>
+                  </div>
+                  <div class="flex flex-col bg-white/5 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/10">
+                    <span class="text-white/80 text-sm font-medium uppercase tracking-wide mb-1">Total Bids</span>
+                    <span class="text-white text-center text-3xl font-bold">47</span>
+                  </div>
+                </div>
+                <div class="flex flex-row gap-6 mt-8 justify-center w-full">
+                  <!-- Bid Now Button -->
+                  <button class="cart-btn px-12 py-6 text-xl bg-black border mr-5 border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-center justify-center category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait hover:bg-black hover:text-white hover:scale-[1.02] hover:shadow-2xl group rounded-lg overflow-hidden relative">
+                    <span class="flex cart-btn-text [letter-spacing:0.06em] text-black text-center relative z-10 transition-all duration-300">BID NOW</span>
+                    <span class="absolute inset-0 bg-gradient-to-r from-black/0 via-black/10 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                    <span class="arrow ml-3 text-xl transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110">→</span>
+                  </button>
+                  <!-- View Details Button - Secondary Action -->
+                  <button class="luxury-btn-secondary px-10 py-6 text-xl mr-2 text-white bg-white/10 border border-white/60 font-['Montserrat'] font-semibold backdrop-blur-md flex items-center justify-center category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait hover:bg-white/25 hover:border-white/90 hover:scale-[1.02] hover:shadow-xl group rounded-lg overflow-hidden relative">
+                    <span class="flex [letter-spacing:0.06em] text-center relative z-10 transition-all duration-300">VIEW DETAILS</span>
+                    <span class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Minimalistic Heart Button -->
+            <button class="absolute top-6 right-8 z-20 bg-black/30 border border-white/20 shadow-lg cursor-pointer w-12 h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-lg rounded-full hover:bg-white/15 hover:border-white/40 hover:scale-110 group">
+              <svg class="w-5 h-5 transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" class="text-white group-hover:text-red-300 transition-colors duration-300"/>
+              </svg>
+            </button>
+            <img class="w-[160vh] h-[75vh] object-cover rounded-md" src="./images/image copy 2.png" alt="">
+            <div class="absolute inset-0 bg-black/20 rounded-md pointer-events-none"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-  <!-- Cart Overlay -->
+  <!-- ================= CART OVERLAY & SIDEBAR ================= -->
   <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-40 hidden transition-opacity duration-300"></div>
-
- 
   <div id="sidebar-cart" class="fixed top-0 right-0 h-full w-full max-w-md bg-black z-50 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-row overflow-hidden">
-  
     <div class="flex justify-center items-center flex-col flex-grow min-h-0 w-full">
       <div class="flex justify-between items-center p-6 border-b border-white w-full">
         <h2 class="text-2xl font-semibold text-white tracking-wide font-['Montserrat']">CART</h2>
       </div>
       <div class="p-6 overflow-y-auto flex flex-col justify-center items-center gap-4 w-full grow min-h-0" id="cart-items">
         <div class="flex flex-col items-start h-full">
-          <p class="text-base mt-3 text-white font-['Montserrat'] text-[2.9rem] leading-snug max-w-3xl text-left">Your cart is empty</p>
+          <p class="text-base mt-2 text-white font-['Montserrat'] text-[2.8rem] leading-snug max-w-3xl text-left">Your cart is empty</p>
         </div>
-      </div>
-      <div class="p-6 border-t border-white flex items-center mb-3 justify-center w-full">
-        <button class="mt-2 cart-btn px-12 py-5 border border-white bg-black font-['Montserrat'] font-semibold flex items-center justify-start mx-auto transition-all duration-700 relative overflow-hidden gap-8 cursor-pointer active:cursor-wait">
-            <span class="cart-btn-text flex text-xs tracking-wide">CHECK OUT</span>
-            <span class="arrow ml-8 text-xl text-white mb-1 justify-center relative z-10">→</span>
-          </button>
       </div>
     </div>
   </div>
