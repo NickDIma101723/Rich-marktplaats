@@ -72,78 +72,74 @@
   </div>
 
   <!-- ================= CATEGORIES ================= -->
-  <div class="bg-black min-h-[650vh]">
-    <div class="flex items-start justify-start px-10 h-full flex-col fade-in-on-scroll">
+  <div class="bg-black min-h-screen">
+    <div class="flex items-start justify-start px-4 sm:px-10 h-full flex-col fade-in-on-scroll">
       <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade">Categories</h2>
       <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
       <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md leading-snug categories-browse">Browse our curated selection of luxury items across exclusive categories</p>
     </div>
     <!-- Category 1: Cars -->
-    <div class="flex items-center flex-col mt-8 justify-center w-full fade-in-on-scroll">
-      <div class="w-full h-[105vh] relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll">
-        <div class="flex flex-col items-start pl-33 pt-30 pb-10 z-40 w-full absolute top-0 left-0 gap-6">
+    <div class="flex items-center flex-col mt-8 justify-center w-full fade-in-on-scroll px-4 lg:px-0 mb-12 lg:mb-0">
+      <div class="w-full relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll p-0">
+        <img class="category-img w-full h-[14rem] sm:h-[20rem] md:h-[25rem] lg:h-[68rem] object-cover transition-all duration-1000 fade-in-on-scroll rounded-xl lg:rounded-none" src="./images/Veyron.png" alt="" loading="lazy">
+        <video class="category-video absolute top-0 left-0 w-full h-[14rem] sm:h-[20rem] md:h-[25rem] lg:h-[68rem] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll rounded-xl lg:rounded-none" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
+        <div class="flex flex-col items-start pl-40 pt-30 pb-10 z-40 w-full absolute top-0 left-0 gap-3 lg:gap-16">
           <h2 class="text-white text-[8vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">01</h2>
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Luxury Cars</h1>
-          <p class="text-white ml-1 text-5xl mt-8 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">2,847 <span class="text-3xl ml-10">Available Items</span></p>
-          <p class="font-['Montserrat'] text-2xl mt-6 text-white leading-snug max-w-2xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium cars from verified sellers worldwide.</p>
-          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
+          <p class="text-white ml-1 text-2xl sm:text-4xl mt-4 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">2,847 <span class="text-lg sm:text-3xl ml-4 sm:ml-10">Available Items</span></p>
+          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white leading-snug max-w-2xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium cars from verified sellers worldwide.</p>
+          <button class="mt-6 sm:mt-8 explore-btn px-6 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE CARS</span>
           </button>
         </div>
-        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Veyron.png" alt="" loading="lazy">
-        <video class="category-video absolute top-0 left-0 w-full h-[105vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
-        <div class="category-overlay absolute top-0 left-0 w-full h-[105vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
       </div>
     </div>
     <!-- Category 2: Yachts -->
-    <div class="flex items-center flex-col justify-center w-full fade-in-on-scroll">
-      <div class="w-full h-[105vh] relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll">
-        <div class="flex flex-col items-end text-end pl-30 pt-30 pb-10 z-40 w-full absolute top-0 left-6 gap-6">
+    <div class="flex items-center flex-col justify-center w-full fade-in-on-scroll px-4 lg:px-0 mb-12 lg:mb-0">
+      <div class="w-full relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll p-0">
+        <img class="category-img w-full h-[14rem] sm:h-[20rem] md:h-[25rem] lg:h-[68rem] object-cover transition-all duration-1000 fade-in-on-scroll rounded-xl lg:rounded-none" src="./images/Airbrush-Image-Enhancer-1750020637163.jpeg" alt="" loading="lazy">
+        <video class="category-video absolute top-0 left-0 w-full h-[14rem] sm:h-[20rem] md:h-[25rem] lg:h-[68rem] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll rounded-xl lg:rounded-none" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
+        <div class="flex flex-col items-end text-end pl-36 pt-30 pb-10 z-40 w-full absolute top-0 left-6 gap-3 lg:gap-16">
           <h2 class="text-white text-[8vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">02</h2>
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Luxury Yachts</h1>
-          <p class="text-white ml-1 text-5xl mt-8 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">1,718 <span class="text-3xl ml-10">Available Items</span></p>
-          <p class="font-['Montserrat'] text-2xl mt-6 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium yachts from verified sellers worldwide.</p>
-          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
+          <p class="text-white ml-1 text-2xl sm:text-4xl mt-4 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">1,718 <span class="text-lg sm:text-3xl ml-4 sm:ml-10">Available Items</span></p>
+          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium yachts from verified sellers worldwide.</p>
+          <button class="mt-6 sm:mt-8 explore-btn px-6 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE YACHTS</span>
           </button>
         </div>
-        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Airbrush-Image-Enhancer-1750020637163.jpeg" alt="" loading="lazy">
-        <video class="category-video absolute top-0 left-0 w-full h-[105vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
-        <div class="category-overlay absolute top-0 left-0 w-full h-[105vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
       </div>
     </div>
     <!-- Category 3: Accessories -->
-    <div class="flex items-center flex-col justify-center w-full fade-in-on-scroll">
-      <div class="w-full h-[105vh] relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll">
-        <div class="flex flex-col items-start pl-33 pt-30 pb-10 z-40 w-full absolute top-0 left-0 gap-6">
+    <div class="flex items-center flex-col justify-center w-full fade-in-on-scroll px-4 lg:px-0 mb-12 lg:mb-0">
+      <div class="w-full relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll p-0">
+        <img class="category-img w-full h-[14rem] sm:h-[20rem] md:h-[25rem] lg:h-[68rem] object-cover transition-all duration-1000 fade-in-on-scroll rounded-xl lg:rounded-none" src="./images/Dolce.png" alt="" loading="lazy">
+        <video class="category-video absolute top-0 left-0 w-full h-[14rem] sm:h-[20rem] md:h-[25rem] lg:h-[68rem] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll rounded-xl lg:rounded-none" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
+        <div class="flex flex-col items-start pl-40 pt-30 pb-10 z-40 w-full absolute top-0 left-0 gap-3 lg:gap-16">
           <h2 class="text-white text-[8vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">03</h2>
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Luxury Accesories</h1>
-          <p class="text-white ml-1 text-5xl mt-8 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">3,286 <span class="text-3xl ml-10">Available Items</span></p>
-          <p class="font-['Montserrat'] text-2xl mt-6 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium accesories from verified sellers worldwide.</p>
-          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
+          <p class="text-white ml-1 text-2xl sm:text-4xl mt-4 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">3,286 <span class="text-lg sm:text-3xl ml-4 sm:ml-10">Available Items</span></p>
+          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium accesories from verified sellers worldwide.</p>
+          <button class="mt-6 sm:mt-8 explore-btn px-6 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE ACCESORIES</span>
           </button>
         </div>
-        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Dolce.png" alt="" loading="lazy">
-        <video class="category-video absolute top-0 left-0 w-full h-[105vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
-        <div class="category-overlay absolute top-0 left-0 w-full h-[105vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
       </div>
     </div>
     <!-- Category 4: Planes -->
-    <div class="flex items-center flex-col justify-center w-full fade-in-on-scroll">
-      <div class="w-full h-[105vh] text-end relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll">
-        <div class="flex flex-col items-end pl-40 pt-30 pb-10 z-40 w-full absolute top-0 left-0 gap-6">
+    <div class="flex items-center flex-col justify-center w-full fade-in-on-scroll px-4 lg:px-0 mb-12 lg:mb-0">
+      <div class="w-full relative group overflow-hidden flex flex-col justify-end fade-in-on-scroll p-0">
+        <img class="category-img w-full h-[14rem] sm:h-[20rem] md:h-[25rem] lg:h-[68rem] object-cover transition-all duration-1000 fade-in-on-scroll rounded-xl lg:rounded-none" src="./images/Airbrush-Image-Enhancer-1750026042060.jpeg" alt="" loading="lazy">
+        <video class="category-video absolute top-0 left-0 w-full h-[14rem] sm:h-[20rem] md:h-[25rem] lg:h-[68rem] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll rounded-xl lg:rounded-none" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
+        <div class="flex flex-col items-end pl-36 pt-30 pb-10 z-40 w-full absolute top-0 left-0 gap-3 lg:gap-16">
           <h2 class="text-white text-[8vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">04</h2>
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Luxury Planes</h1>
-          <p class="text-white ml-1 text-5xl mt-8 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">2,147 <span class="text-3xl ml-10">Available Items</span></p>
-          <p class="font-['Montserrat'] text-2xl mt-6 text-white [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium planes from verified sellers worldwide.</p>
-          <button class="mt-8 explore-btn px-8 py-8 text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
+          <p class="text-white ml-1 text-2xl sm:text-4xl mt-4 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">2,147 <span class="text-lg sm:text-3xl ml-4 sm:ml-10">Available Items</span></p>
+          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700">Discover our exclusive collection of premium planes from verified sellers worldwide.</p>
+          <button class="mt-6 sm:mt-8 explore-btn px-6 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait">
             <span class="flex [letter-spacing:0.05em] text-center">EXPLORE PLANES</span>
           </button>
         </div>
-        <img class="category-img w-full h-[105vh] object-cover transition-all duration-1000 fade-in-on-scroll" src="./images/Airbrush-Image-Enhancer-1750026042060.jpeg" alt="" loading="lazy">
-        <video class="category-video absolute top-0 left-0 w-full h-[105vh] object-cover opacity-0 transition-all duration-1000 pointer-events-none z-30 bg-black fade-in-on-scroll" src="./video/Bugatti.mp4" muted loop playsinline preload="none" poster="./images/Veyron.png"></video>
-        <div class="category-overlay absolute top-0 left-0 w-full h-[105vh] bg-black opacity-0 pointer-events-none z-40 transition-opacity duration-500 fade-in-on-scroll"></div>
       </div>
     </div>
 

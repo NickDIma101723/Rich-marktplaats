@@ -258,8 +258,6 @@ html { scroll-behavior: smooth; }
   letter-spacing: 0.04em;
   z-index: 2;
   color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
   transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
   position: relative;
   backface-visibility: hidden;
@@ -269,22 +267,3 @@ html { scroll-behavior: smooth; }
   color: #181818;
   font-weight: 500; 
 }
-.cart-btn .arrow {
-  display: inline-block;
-  width: 1.5rem;
-  text-align: left;
-  opacity: 1;
-  margin-left: 0.5rem;
-  font-size: 1.25rem;
-  color: #fff !important;
-  transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
-  position: relative;
-  z-index: 2;
-  backface-visibility: hidden;
-  will-change: transform;
-}
-.cart-btn:hover .arrow {
-  animation: cart-arrow-vanish 0.7s cubic-bezier(0.4,0,0.2,1);
-  color: #181818 !important;
-}
-
