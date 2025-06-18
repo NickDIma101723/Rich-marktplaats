@@ -44,6 +44,20 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+@keyframes luxuryFadeUpIn {
+  0% { opacity: 0; transform: translateY(30px); }
+  40% { opacity: 1; transform: translateY(0); }
+  60% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-30px); }
+}
+@keyframes luxuryFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes luxuryFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-20px); }
+}
 
 
 html { scroll-behavior: smooth; }
@@ -266,4 +280,13 @@ html { scroll-behavior: smooth; }
 .cart-btn:hover .cart-btn-text {
   color: #181818;
   font-weight: 500; 
+}
+.luxury-switcher-animate {
+  animation: luxuryFadeUpIn 2.5s cubic-bezier(0.4,0,0.2,1);
+}
+.luxury-switcher-animate-in {
+  animation: luxuryFadeIn 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.luxury-switcher-animate-out {
+  animation: luxuryFadeOut 0.4s cubic-bezier(0.4,0,0.2,1);
 }
