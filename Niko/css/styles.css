@@ -290,3 +290,59 @@ html { scroll-behavior: smooth; }
 .luxury-switcher-animate-out {
   animation: luxuryFadeOut 0.4s cubic-bezier(0.4,0,0.2,1);
 }
+
+.card {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-4px);
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+.image-blur {
+    transition: all 0.4s ease;
+}
+.card:hover .image-blur {
+    transform: scale(1.02);
+}
+.heart-btn {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+.heart-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+.heart-icon {
+    transition: all 0.2s ease;
+}
+.heart-checkbox:checked + .heart-icon {
+    fill: #ffffff;
+    stroke: none;
+}
+.heart-checkbox:not(:checked) + .heart-icon {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.7);
+    stroke-width: 1.5;
+}
+.minimal-btn {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease;
+}
+.minimal-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.badge {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}

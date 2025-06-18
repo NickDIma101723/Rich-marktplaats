@@ -6,21 +6,64 @@
   <title>AUREA MONSIEUR</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="./js/script.js" defer></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="icon" type="image/svg+xml" href="./images/Logo aura.svg">
+  <style>
+    /* Navbar transition styles */
+    .navbar-large {
+      opacity: 1;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .navbar-small {
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .navbar-hidden {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  </style>
 </head>
 <body class="relative min-h-screen">
   <!-- ================= NAVBAR & HERO ================= -->
   <div class="relative w-full h-screen">
-    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0" preload="none">
+    <!-- Video background -->
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
       <source src="./video/Monsieur.mp4" type="video/mp4">
     </video>
-    <div class="absolute inset-0 bg-black opacity-45 z-10"></div>
+
+    <!-- Black filter overlay (covers the whole page, does NOT block pointer events) -->
+    <div class="absolute inset-0 bg-black opacity-45 z-10 pointer-events-none"></div>
+
+    <!-- Main homepage content (above filter and video) --> 
     <div class="relative z-20">
-      <!-- Navbar -->
-      <nav class="fade-navbar absolute top-8 left-1/2 transform -translate-x-1/2 w-[90%] max-w-7xl">
+      <!-- Large Navbar (Main/Initial) -->
+      <nav id="navbar-large" class="navbar-large fixed top-0 left-0 w-full z-1100">
+  <div class="flex items-center justify-between w-full px-0 py-4 max-w-none">
+    <div class="flex items-center pl-12">
+      <img class="w-24 h-16" src="./images/Logo aura.svg" alt="Logo">
+    </div>
+    <ul class="flex items-center gap-4 md:gap-8 lg:gap-12 text-white text-base md:text-lg font-['Montserrat'] font-medium">
+      <li><a href="#" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Ontdek</a></li>
+      <li><a href="#" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Veilingen</a></li>
+      <li><a href="#" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Verkoop Luxe</a></li>
+      <li><a href="#" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Support</a></li>
+    </ul>
+    <div class="flex items-center gap-8 pr-12">
+      <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/heart.png" alt="Wishlist"></a>
+      <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/shopping-bag.png" alt="Cart"></a>
+      <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/user (1).png" alt="User"></a>
+    </div>
+  </div>
+</nav>
+
+      <!-- Small Navbar (On Scroll) -->
+      <nav id="navbar-small" class=" navbar-small fixed top-0 left-0 right-0 mx-auto mt-10 backdrop-blur-lg bg-black/20 rounded-full border-b border-white/10 max-w-7xl z-1000">
         <div class="flex items-center justify-between bg-black/20 backdrop-blur-sm border border-white/35 rounded-full px-8 py-4 shadow-2xl">
           <div class="flex items-center">
             <img class="w-24 h-16 object-contain transition-transform duration-500 hover:scale-110" src="./images/Logo aura.svg" alt="AUREA" loading="lazy">
@@ -32,31 +75,67 @@
             <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-support">SUPPORT</a>
           </div>
           <div class="flex items-center gap-6">
-            <button id="lang-toggle" class="group relative w-20 h-10 flex items-center justify-center transition-all duration-300 hover:scale-110 bg-white/10 border border-white/35 rounded-full px-4 py-2 text-white font-['Montserrat'] font-medium text-base shadow-md focus:outline-none focus:ring-2 focus:ring-white/60">
-              <span id="lang-en" class="transition-colors duration-300 text-white font-bold">EN</span>
-              <span class="mx-1 text-white/60">|</span>
-              <span id="lang-nl" class="transition-colors duration-300 text-white/60 font-bold">NL</span>
-            </button>
-            <button class="group relative w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-125">
-              <svg class="w-5 h-5 text-white transition-all duration-300 group-hover:text-red-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <div class="inline-flex rounded-full shadow overflow-hidden border border-white/40 bg-black/30 backdrop-blur-sm mr-4">
+              <button id="lang-en" class="px-6 py-2 text-white font-['Montserrat'] font-semibold transition-all duration-200 focus:outline-none hover:bg-white/10 active:bg-white/20">EN</button>
+              <button id="lang-nl" class="px-6 py-2 text-white/60 font-['Montserrat'] font-semibold transition-all duration-200 focus:outline-none">NL</button>
+            </div>
+            <button class="group relative w-11 h-11 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <svg class="w-6 h-6 text-white transition-all duration-300 group-hover:scale-105" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
               </svg>
             </button>
-            <button class="group relative w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-125" id="open-cart">
-              <svg class="w-5 h-5 text-white transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <button class="group relative w-11 h-11 flex items-center justify-center transition-all duration-300 hover:scale-110" id="open-cart">
+              <svg class="w-6 h-6 text-white transition-all duration-300 group-hover:scale-105" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993z"/>
               </svg>
             </button>
-            <button class="group relative w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-125">
-              <svg class="w-5 h-5 text-white transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <button class="group relative w-11 h-11 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <svg class="w-6 h-6 text-white transition-all duration-300 group-hover:scale-105" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
               </svg>
             </button>
           </div>
         </div>
       </nav>
+
+      <!-- Small Navbar (On Scroll) -->
+      <nav id="navbar-small" class=" navbar-small fixed top-0 left-0 right-0 mx-auto mt-10 backdrop-blur-lg max-w-7xl z-450">
+        <div class="flex items-center justify-between bg-black/20 backdrop-blur-sm border border-white/35 rounded-full px-8 py-4 shadow-2xl">
+          <div class="flex items-center">
+            <img class="w-24 h-16 object-contain transition-transform duration-500 hover:scale-110" src="./images/Logo aura.svg" alt="AUREA" loading="lazy">
+          </div>
+          <div class="flex items-center gap-12">
+            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-discover">DISCOVER</a>
+            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-auctions">AUCTIONS</a>
+            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-sell">SELL LUXURY</a>
+            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-support">SUPPORT</a>
+          </div>
+          <div class="flex items-center gap-6">
+            <div class="inline-flex rounded-full shadow overflow-hidden border border-white/40 bg-black/30 backdrop-blur-sm mr-4">
+              <button id="lang-en" class="px-6 py-2 text-white font-['Montserrat'] font-semibold transition-all duration-200 focus:outline-none hover:bg-white/10 active:bg-white/20">EN</button>
+              <button id="lang-nl" class="px-6 py-2 text-white/60 font-['Montserrat'] font-semibold transition-all duration-200 focus:outline-none">NL</button>
+            </div>
+            <button class="group relative w-11 h-11 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <svg class="w-6 h-6 text-white transition-all duration-300 group-hover:scale-105" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
+              </svg>
+            </button>
+            <button class="group relative w-11 h-11 flex items-center justify-center transition-all duration-300 hover:scale-110" id="open-cart">
+              <svg class="w-6 h-6 text-white transition-all duration-300 group-hover:scale-105" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993z"/>
+              </svg>
+            </button>
+            <button class="group relative w-11 h-11 flex items-center justify-center transition-all duration-300 hover:scale-110">
+              <svg class="w-6 h-6 text-white transition-all duration-300 group-hover:scale-105" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+
       <!-- Hero Section -->
-      <div class="flex flex-col items-center text-center justify-center h-full fade-in-on-scroll pt-20 lg:pt-32 xl:pt-40">
+      <div class="flex flex-col items-center text-center justify-center h-full fade-in-on-scroll pt-20 lg:pt-32 xl:pt-30">
         <h1 class="fade-left text-center text-white text-3xl opacity-100 mt-10 mb-6 font-['Playfair_Display'] [letter-spacing:0.13em] font-normal" id="hero-welcome">WELCOME TO THE FUTURE OF LUXURY</h1>
         <h2 class="aurea-slide text-white text-[7em] font-['Playfair_Display'] ml-10 font-normal [letter-spacing:0.06em] mt-4 mb-2" id="hero-aurea">AUREA</h2>
         <h2 class="monsieur-slide text-white text-[7em] font-['Playfair_Display'] font-normal ml-10 [letter-spacing:0.06em] mt-[-1.5rem] mb-8" id="hero-marketplace">MARKETPLACE</h2>
@@ -91,7 +170,7 @@
           <h2 class="text-white text-[8vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat1-num">01</h2>
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat1-title">Luxury Cars</h1>
           <p class="text-white ml-1 text-2xl sm:text-4xl mt-4 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat1-items">2,847 <span class="text-lg sm:text-3xl ml-4 sm:ml-10" id="cat1-items-label">Available Items</span></p>
-          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white leading-snug max-w-2xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat1-desc">Discover our exclusive collection of premium cars from verified sellers worldwide.</p>
+          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white leading-snug max-w-2xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat1-desc">Discover our exclusive collection of premium cars from verified sellers worldwide.</p>
           <button class="mt-6 sm:mt-8 explore-btn px-6 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait" id="cat1-btn">
             <span class="flex [letter-spacing:0.05em] text-center" id="cat1-btn-text">EXPLORE CARS</span>
           </button>
@@ -108,7 +187,7 @@
           <h2 class="text-white text-[8vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat2-num">02</h2>
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat2-title">Luxury Yachts</h1>
           <p class="text-white ml-1 text-2xl sm:text-4xl mt-4 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat2-items">1,718 <span class="text-lg sm:text-3xl ml-4 sm:ml-10" id="cat2-items-label">Available Items</span></p>
-          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat2-desc">Discover our exclusive collection of premium yachts from verified sellers worldwide.</p>
+          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat2-desc">Discover our exclusive collection of premium yachts from verified sellers worldwide.</p>
           <button class="mt-6 sm:mt-8 explore-btn px-6 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait" id="cat2-btn">
             <span class="flex [letter-spacing:0.05em] text-center" id="cat2-btn-text">EXPLORE YACHTS</span>
           </button>
@@ -125,7 +204,7 @@
           <h2 class="text-white text-[8vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat3-num">03</h2>
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat3-title">Luxury Accesories</h1>
           <p class="text-white ml-1 text-2xl sm:text-4xl mt-4 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat3-items">3,286 <span class="text-lg sm:text-3xl ml-4 sm:ml-10" id="cat3-items-label">Available Items</span></p>
-          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat3-desc">Discover our exclusive collection of premium accesories from verified sellers worldwide.</p>
+          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white leading-snug max-w-3xl [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat3-desc">Discover our exclusive collection of premium accesories from verified sellers worldwide.</p>
           <button class="mt-6 sm:mt-8 explore-btn px-6 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait" id="cat3-btn">
             <span class="flex [letter-spacing:0.05em] text-center" id="cat3-btn-text">EXPLORE ACCESORIES</span>
           </button>
@@ -142,7 +221,7 @@
           <h2 class="text-white text-[8vw] font-['Montserrat'] [letter-spacing:0.06em] font-bold opacity-85 leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat4-num">04</h2>
           <h1 class="text-white text-[4vw] font-['Montserrat'] font-normal [letter-spacing:0.06em] leading-none drop-shadow-lg category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat4-title">Luxury Planes</h1>
           <p class="text-white ml-1 text-2xl sm:text-4xl mt-4 font-['Montserrat'] [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat4-items">2,147 <span class="text-lg sm:text-3xl ml-4 sm:ml-10" id="cat4-items-label">Available Items</span></p>
-          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat4-desc">Discover our exclusive collection of premium planes from verified sellers worldwide.</p>
+          <p class="font-['Montserrat'] text-lg sm:text-2xl mt-4 text-white [letter-spacing:0.06em] font-bold category-animate opacity-0 translate-x-[-80px] transition-all duration-700" id="cat4-desc">Discover our exclusive collection of premium planes from verified sellers worldwide.</p>
           <button class="mt-6 sm:mt-8 explore-btn px-6 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl text-white border border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-start justify-start category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait" id="cat4-btn">
             <span class="flex [letter-spacing:0.05em] text-center" id="cat4-btn-text">EXPLORE PLANES</span>
           </button>
@@ -181,17 +260,16 @@
                     <span class="text-white text-center text-3xl font-bold" id="bids-total-value">47</span>
                   </div>
                 </div>
-                <div class="flex flex-row gap-6 mt-8 justify-center w-full">
+                <div class="flex flex-row gap-6 mt-6 justify-center w-full pr-65">
                   <!-- Bid Now Button -->
-                  <button class="cart-btn px-12 py-6 text-xl bg-black border mr-5 border-white font-['Montserrat'] font-semibold backdrop-blur-sm flex items-center justify-center category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait hover:bg-black hover:text-white hover:scale-[1.02] hover:shadow-2xl group rounded-lg overflow-hidden relative">
-                    <span class="flex cart-btn-text [letter-spacing:0.06em] text-black text-center relative z-10 transition-all duration-300">BID NOW</span>
-                    <span class="absolute inset-0 bg-gradient-to-r from-black/0 via-black/10 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-                    <span class="arrow ml-3 text-xl transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110">→</span>
+                   <button class="luxury-btn-secondary px-8 py-5 text-lg text-white backdrop-blur-sm bg-black/20 border border-white/60 font-['Montserrat'] font-semibold flex items-center justify-center rounded-lg overflow-hidden relative group transition-all duration-300 hover:bg-white/90 hover:text-black hover:scale-105 tracking-widest uppercase shadow-none">
+                    <span class="relative z-10 transition-all duration-300 group-hover:text-black uppercase group-hover:font-bold">Bid now</span>
+                    <span class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
                   </button>
-                  <!-- View Details Button - Secondary Action -->
-                  <button class="luxury-btn-secondary px-10 py-6 text-xl mr-2 text-white bg-white/10 border border-white/60 font-['Montserrat'] font-semibold backdrop-blur-md flex items-center justify-center category-animate opacity-0 translate-x-[-80px] transition-all duration-700 cursor-pointer active:cursor-wait hover:bg-white/25 hover:border-white/90 hover:scale-[1.02] hover:shadow-xl group rounded-lg overflow-hidden relative">
-                    <span class="flex [letter-spacing:0.06em] text-center relative z-10 transition-all duration-300">VIEW DETAILS</span>
-                    <span class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                  <!-- View Details Button -->
+                  <button class="luxury-btn-secondary px-8 py-5 text-lg text-white bg-black/20 backdrop-blur-sm border border-white/60 font-['Montserrat'] font-semibold flex items-center justify-center rounded-lg overflow-hidden relative group transition-all duration-300 hover:bg-white/90 hover:text-black hover:scale-105 tracking-widest uppercase shadow-none">
+                    <span class="relative z-10 transition-all duration-300 group-hover:text-black group-hover:font-bold">VIEW DETAILS</span>
+                    <span class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
                   </button>
                 </div>
               </div>
@@ -208,21 +286,217 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- ================= CART OVERLAY & SIDEBAR ================= -->
-  <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-40 hidden transition-opacity duration-300"></div>
-  <div id="sidebar-cart" class="fixed top-0 right-0 h-full w-full max-w-md bg-black z-50 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-row overflow-hidden">
-    <div class="flex justify-center items-center flex-col flex-grow min-h-0 w-full">
-      <div class="flex justify-between items-center p-6 border-b border-white w-full">
-        <h2 class="text-2xl font-semibold text-white tracking-wide font-['Montserrat']">CART</h2>
-      </div>
-      <div class="p-6 overflow-y-auto flex flex-col justify-center items-center gap-4 w-full grow min-h-0" id="cart-items">
-        <div class="flex flex-col items-start h-full">
-          <p class="text-base mt-2 text-white font-['Montserrat'] text-[2.8rem] leading-snug max-w-3xl text-left">Your cart is empty</p>
+     <!-- ================= CARDS SECTION ================= -->
+   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-[95.3rem] mt-12 mx-auto">
+          <!-- Card 1 -->
+        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
+            <!-- Image Section -->
+            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
+                <img src="/placeholder.svg?height=320&width=500" alt="Bugatti Chiron" class="image-blur w-full h-full object-cover" />
+                <!-- Heart Button -->
+                <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
+                    <input class="heart-checkbox sr-only" type="checkbox" id="heart-1" />
+                    <label class="cursor-pointer" for="heart-1">
+                        <svg class="heart-icon w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </label>
+                </button>
+            </div>
+            <!-- Content Section -->
+            <div class="sm:w-2/5 p-6 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-white text-xl font-semibold mb-1">Bugatti Chiron</h3>
+                        <p class="text-white/60 text-sm">2022</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">Monaco</span>
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">23 bids</span>
+                    </div>
+                </div>
+                <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium mt-6">
+                    View Bid
+                </button>
+            </div>
         </div>
+        
+        <!-- Card 2 -->
+        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
+            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
+                <img src="/placeholder.svg?height=320&width=500" alt="Lamborghini Aventador" class="image-blur w-full h-full object-cover" />
+                <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
+                    <input class="heart-checkbox sr-only" type="checkbox" id="heart-2" />
+                    <label class="cursor-pointer" for="heart-2">
+                        <svg class="heart-icon w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </label>
+                </button>
+            </div>
+            <div class="sm:w-2/5 p-6 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-white text-xl font-semibold mb-1">Lamborghini Aventador</h3>
+                        <p class="text-white/60 text-sm">2021</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">Dubai</span>
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">17 bids</span>
+                    </div>
+                </div>
+                <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium mt-6">
+                    View Bid
+                </button>
+            </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
+            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
+                <img src="/placeholder.svg?height=320&width=500" alt="Rolls Royce Phantom" class="image-blur w-full h-full object-cover" />
+                <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
+                    <input class="heart-checkbox sr-only" type="checkbox" id="heart-3" />
+                    <label class="cursor-pointer" for="heart-3">
+                        <svg class="heart-icon w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </label>
+                </button>
+            </div>
+            <div class="sm:w-2/5 p-6 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-white text-xl font-semibold mb-1">Rolls Royce Phantom</h3>
+                        <p class="text-white/60 text-sm">2020</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">London</span>
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">9 bids</span>
+                    </div>
+                </div>
+                <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium mt-6">
+                    View Bid
+                </button>
+            </div>
+        </div>
+        
+        <!-- Card 4 -->
+        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
+            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
+                <img src="/placeholder.svg?height=320&width=500" alt="Ferrari SF90" class="image-blur w-full h-full object-cover" />
+                <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
+                    <input class="heart-checkbox sr-only" type="checkbox" id="heart-4" />
+                    <label class="cursor-pointer" for="heart-4">
+                        <svg class="heart-icon w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </label>
+                </button>
+            </div>
+            <div class="sm:w-2/5 p-6 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-white text-xl font-semibold mb-1">Ferrari SF90</h3>
+                        <p class="text-white/60 text-sm">2023</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">Milan</span>
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">14 bids</span>
+                    </div>
+                </div>
+                <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium mt-6">
+                    View Bid
+                </button>
+            </div>
+        </div>
+        
+        <!-- Card 5 -->
+        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
+            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
+                <img src="/placeholder.svg?height=320&width=500" alt="Porsche 911 Turbo S" class="image-blur w-full h-full object-cover" />
+                <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
+                    <input class="heart-checkbox sr-only" type="checkbox" id="heart-5" />
+                    <label class="cursor-pointer" for="heart-5">
+                        <svg class="heart-icon w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </label>
+                </button>
+            </div>
+            <div class="sm:w-2/5 p-6 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-white text-xl font-semibold mb-1">Porsche 911 Turbo S</h3>
+                        <p class="text-white/60 text-sm">2022</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">Stuttgart</span>
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">11 bids</span>
+                    </div>
+                </div>
+                <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium mt-6">
+                    View Bid
+                </button>
+            </div>
+        </div>
+        
+        <!-- Card 6 -->
+        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
+            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
+                <img src="/placeholder.svg?height=320&width=500" alt="Aston Martin DBS" class="image-blur w-full h-full object-cover" />
+                <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
+                    <input class="heart-checkbox sr-only" type="checkbox" id="heart-6" />
+                    <label class="cursor-pointer" for="heart-6">
+                        <svg class="heart-icon w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </label>
+                </button>
+            </div>
+            <div class="sm:w-2/5 p-6 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-white text-xl font-semibold mb-1">Aston Martin DBS</h3>
+                        <p class="text-white/60 text-sm">2022</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">Geneva</span>
+                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">7 bids</span>
+                    </div>
+                </div>
+                <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium mt-6">
+                    View Bid
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+      
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="relative z-20 w-full bg-black/70 backdrop-blur-lg border-t border-white/10 mt-24">
+    <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="flex items-center gap-4">
+        <img src="./images/Logo aura.svg" alt="AUREA Logo" class="w-16 h-12 object-contain" />
+        <span class="text-white text-2xl font-['Montserrat'] font-bold tracking-widest">AUREA</span>
+      </div>
+      <ul class="flex flex-wrap gap-8 text-white/80 text-base font-['Montserrat'] font-medium">
+        <li><a href="#" class="transition-colors duration-300 hover:text-white">Discover</a></li>
+        <li><a href="#" class="transition-colors duration-300 hover:text-white">Auctions</a></li>
+        <li><a href="#" class="transition-colors duration-300 hover:text-white">Sell Luxury</a></li>
+        <li><a href="#" class="transition-colors duration-300 hover:text-white">Support</a></li>
+        <li><a href="#" class="transition-colors duration-300 hover:text-white">Privacy Policy</a></li>
+        <li><a href="#" class="transition-colors duration-300 hover:text-white">Terms</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <!-- Social icons here -->
       </div>
     </div>
-  </div>
+    <div class="text-center text-white/50 text-sm font-['Montserrat'] py-4 border-t border-white/10">
+      &copy; 2024 AUREA. All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>
