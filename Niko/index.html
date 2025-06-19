@@ -6,7 +6,6 @@
   <title>AUREA MONSIEUR</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="./js/script.js" defer></script>
-  
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.css">
@@ -29,7 +28,7 @@
     }
   </style>
 </head>
-<body class="relative min-h-screen">
+<body class="relative min-h-screen scroll-smooth ">
   <!-- ================= NAVBAR & HERO ================= -->
   <div class="relative w-full h-screen">
     <!-- Video background -->
@@ -43,16 +42,16 @@
     <!-- Main homepage content (above filter and video) --> 
     <div class="relative z-20">
       <!-- Large Navbar (Main/Initial) -->
-      <nav id="navbar-large" class="navbar-large fixed top-0 left-0 w-full z-1100">
+    <nav id="navbar-large" class="navbar-large fixed top-0 left-0 w-full z-1100">
   <div class="flex items-center justify-between w-full px-0 py-4 max-w-none">
     <div class="flex items-center pl-12">
       <img class="w-24 h-16" src="./images/Logo aura.svg" alt="Logo">
     </div>
     <ul class="flex items-center gap-4 md:gap-8 lg:gap-12 text-white text-base md:text-lg font-['Montserrat'] font-medium">
-      <li><a href="#" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Ontdek</a></li>
-      <li><a href="#" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Veilingen</a></li>
-      <li><a href="#" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Verkoop Luxe</a></li>
-      <li><a href="#" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Support</a></li>
+      <li><a href="#categories-title" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Ontdek</a></li>
+      <li><a href="#bids-title" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Veilingen</a></li>
+      <li><a href="#cat3-title" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Verkoop Luxe</a></li>
+      <li><a href="#footer" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Support</a></li>
     </ul>
     <div class="flex items-center gap-8 pr-12">
       <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/heart.png" alt="Wishlist"></a>
@@ -64,17 +63,17 @@
 
 
       <!-- Small Navbar (On Scroll) -->
-      <nav id="navbar-small" class=" navbar-small fixed top-0 left-0 right-0 mx-auto mt-10 backdrop-blur-lg max-w-7xl z-450">
-        <div class="flex items-center justify-between bg-black/20 backdrop-blur-sm border border-white/35 rounded-full px-8 py-4 shadow-2xl">
-          <div class="flex items-center">
-            <img class="w-24 h-16 object-contain transition-transform duration-500 hover:scale-110" src="./images/Logo aura.svg" alt="AUREA" loading="lazy">
-          </div>
-          <div class="flex items-center gap-12">
-            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-discover">DISCOVER</a>
-            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-auctions">AUCTIONS</a>
-            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-sell">SELL LUXURY</a>
-            <a href="#" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-support">SUPPORT</a>
-          </div>
+      <nav id="navbar-small" class=" navbar-small fixed top-0 left-0 rounded-full right-0 mx-auto mt-10 backdrop-blur-lg max-w-7xl z-[9999]">
+  <div class="flex items-center justify-between bg-black/20 backdrop-blur-sm border border-white/35 rounded-full px-8 py-4 shadow-2xl">
+    <div class="flex items-center">
+      <img class="w-24 h-16 object-contain transition-transform duration-500 hover:scale-110" src="./images/Logo aura.svg" alt="AUREA" loading="lazy">
+    </div>
+    <div class="flex items-center gap-12">
+      <a href="#categories-title" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-discover">DISCOVER</a>
+      <a href="#bids-title" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-auctions">AUCTIONS</a>
+      <a href="#cat3-title" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-sell">SELL LUXURY</a>
+      <a href="#footer" class="nav-underline px-6 py-3 text-white font-['Montserrat'] font-medium text-base [letter-spacing:0.03em] transition-all duration-400" id="nav-support">SUPPORT</a>
+    </div>
           <div class="flex items-center gap-6">
             <div class="inline-flex rounded-full shadow overflow-hidden border border-white/40 bg-black/30 backdrop-blur-sm mr-4">
               <button id="lang-en" class="px-6 py-2 text-white font-['Montserrat'] font-semibold transition-all duration-200 focus:outline-none hover:bg-white/10 active:bg-white/20">EN</button>

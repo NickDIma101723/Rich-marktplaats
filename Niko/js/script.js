@@ -326,6 +326,14 @@ const luxuryWords = ["EXCLUSIVE", "ICONIC", "YOURS"];
 let luxuryIndex = 0;
 const luxurySwitcher = document.getElementById('luxury-switcher');
 
+function switchLuxuryWord() {
+  luxurySwitcher.textContent = luxuryWords[luxuryIndex];
+  luxuryIndex = (luxuryIndex + 1) % luxuryWords.length;
+}
+
+switchLuxuryWord(); // Show first word immediately
+setInterval(switchLuxuryWord, 4000); // Change every 2 seconds
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // Heart animation
