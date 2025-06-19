@@ -54,7 +54,9 @@
       <li><a href="#footer" class="nav-underline px-2 md:px-6 whitespace-nowrap transition-colors duration-300 hover:text-white/70">Support</a></li>
     </ul>
     <div class="flex items-center gap-8 pr-12">
-      <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/heart.png" alt="Wishlist"></a>
+      <a href="#" class="group">
+        <img class="w-7 h-7 transition-all duration-300 hover:scale-110 group-hover:drop-shadow-lg" src="./images/heart.png" alt="Wishlist">
+      </a>
       <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/shopping-bag.png" alt="Cart"></a>
       <a href="#"><img class="w-7 h-7 transition-transform duration-300 hover:scale-110" src="./images/user (1).png" alt="User"></a>
     </div>
@@ -194,69 +196,101 @@
     </div>
 
     <!-- ================= HOTTEST BIDS ================= -->
-    <div class="flex items-start justify-center px-10 h-full flex-col fade-in-on-scroll">
-      <h2 class="text-white mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-4xl mb-2 categories-fade" id="bids-title">Hottest Bids</h2>
+    <div class="flex items-start justify-center px-4 sm:px-6 lg:px-10 h-full flex-col fade-in-on-scroll">
+      <h2 class="text-white mt-8 sm:mt-12 lg:mt-15 [letter-spacing:0.05em] font-['Montserrat'] font-medium text-2xl sm:text-3xl lg:text-4xl mb-2 categories-fade" id="bids-title">Hottest Bids</h2>
       <hr class="expand-line w-1/20 mb-2 mt-1 ml-1 border-t-2 border-white opacity-100 categories-line"/>
-      <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md leading-snug categories-browse" id="bids-desc">See the most popular luxury items currently being bid on by our community.</p>
-      <div class="flex flex-wrap gap-12 mt-2">
+      <p class="text-white [letter-spacing:0.05em] pt-2 font-['Montserrat'] max-w-md text-sm sm:text-base leading-snug categories-browse" id="bids-desc">See the most popular luxury items currently being bid on by our community.</p>
+      <div class="flex flex-wrap gap-4 sm:gap-8 lg:gap-12 mt-2 w-full">
         <div class="w-full flex justify-center">
-          <div class="flex flex-col ml-40 justify-center shadow-lg category-animate opacity-0 transition-all duration-700 mt-8 relative overflow-hidden">
+          <!-- Mobile Card Layout (below md) -->
+          <div class="md:hidden bg-black/40 backdrop-blur-xl border border-white/30 rounded-none sm:rounded-2xl overflow-hidden w-full max-w-md shadow-2xl">
+            <!-- Image Section -->
+            <div class="relative w-full h-48 overflow-hidden">
+              <img class="w-full h-full object-cover" src="./images/image copy 2.png" alt="">
+              <!-- Heart Button -->
+              <button class="absolute top-3 right-3 z-20 bg-black/40 border border-white/30 shadow-xl cursor-pointer w-10 h-10 flex items-center justify-center transition-all duration-300 backdrop-blur-xl rounded-full hover:bg-white/10 hover:border-white/50 hover:scale-110 group overflow-hidden">
+                <svg class="w-4 h-4 transition-all duration-300 group-hover:scale-110 relative z-10 group-hover:text-red-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" class="text-white group-hover:text-red-500 transition-colors duration-300"/>
+                </svg>
+              </button>
+              <!-- Status badges -->
+              <div class="absolute top-3 left-3 z-20 flex flex-col gap-2">
+                <span class="bg-white/95 text-black text-xs font-bold px-3 py-1.5 rounded-full uppercase shadow-lg backdrop-blur-sm">Trending</span>
+                <span class="bg-black/40 text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase shadow-lg backdrop-blur-lg border border-white/20">2h 45m</span>
+              </div>
+            </div>
+            <!-- Content Section -->
+            <div class="p-4">
+              <h3 class="text-white text-lg font-semibold mb-2">2024 Bugatti Chiron Super Sport</h3>
+              <div class="flex gap-2 mb-4">
+                <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">Current: $13.2M</span>
+                <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">47 bids</span>
+              </div>
+              <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium">
+                BID NOW
+              </button>
+            </div>
+          </div>
+
+          <!-- Desktop/Tablet Layout (md and above) -->
+          <div class="hidden md:flex flex-col justify-center shadow-lg category-animate opacity-0 transition-all duration-700 mt-4 sm:mt-6 lg:mt-8 relative overflow-hidden w-full max-w-7xl">
             <!-- Clean Status Bar -->
-            <span class="absolute top-6 left-8 z-20 flex flex-row items-center gap-4">
-              <span class="flex items-center justify-center bg-white/95 text-black text-xs font-bold px-6 py-3 rounded-full uppercase shadow-lg backdrop-blur-sm">Trending Now</span>
-              <span class="flex items-center justify-center bg-black/40 text-white text-xs font-semibold px-6 py-3 rounded-full uppercase shadow-lg backdrop-blur-lg border border-white/20">2h 45m Left</span>
+            <span class="absolute top-4 lg:top-6 left-4 lg:left-8 z-20 flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-4">
+              <span class="flex items-center justify-center bg-white/95 text-black text-xs font-bold px-3 md:px-4 lg:px-6 py-2 lg:py-3 rounded-full uppercase shadow-lg backdrop-blur-sm">Trending Now</span>
+              <span class="flex items-center justify-center bg-black/40 text-white text-xs font-semibold px-3 md:px-4 lg:px-6 py-2 lg:py-3 rounded-full uppercase shadow-lg backdrop-blur-lg border border-white/20">2h 45m Left</span>
             </span>
             <div class="flex flex-row items-center h-full w-full absolute top-0 left-0">
-              <div class="flex flex-col justify-center h-full pl-14 mt-67 z-30">
-                <h1 class="text-white text-5xl font-bold font-['Montserrat'] leading-snug drop-shadow-lg" id="bids-main-title">2024 Bugatti Chiron <span class="whitespace-nowrap" id="bids-main-title2">Super</span><br> Sport</h1>
+              <div class="flex flex-col justify-center h-full px-4 md:px-6 lg:px-14 mt-20 md:mt-24 lg:mt-67 z-30">
+                <h1 class="text-white text-xl md:text-2xl lg:text-4xl xl:text-5xl font-bold font-['Montserrat'] leading-tight lg:leading-snug drop-shadow-lg mb-2 md:mb-4" id="bids-main-title">2024 Bugatti Chiron <span class="whitespace-nowrap" id="bids-main-title2">Super</span><br class="hidden lg:block"> Sport</h1>
                 <!-- Clean Bid Information -->
-                <div class="flex flex-row gap-8 mt-10">
-                  <div class="flex flex-col bg-white/5 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/10">
-                    <span class="text-white/80 text-sm text-center font-medium uppercase tracking-wide mb-1" id="bids-current-label">Current Bid</span>
-                    <span class="text-white text-center text-3xl font-bold" id="bids-current-value">$13.2M</span>
+                <div class="flex flex-col md:flex-row gap-2 md:gap-3 lg:gap-8 mt-2 md:mt-4 lg:mt-10">
+                  <div class="flex flex-col bg-white/5 backdrop-blur-sm rounded-lg px-2 md:px-3 lg:px-6 py-2 md:py-3 lg:py-4 border border-white/10">
+                    <span class="text-white/80 text-xs lg:text-sm text-center font-medium uppercase tracking-wide mb-1" id="bids-current-label">Current Bid</span>
+                    <span class="text-white text-center text-lg md:text-xl lg:text-3xl font-bold" id="bids-current-value">$13.2M</span>
                   </div>
-                  <div class="flex flex-col bg-black/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/5">
-                    <span class="text-white/80 text-sm font-medium uppercase tracking-wide mb-1" id="bids-start-label">Starting Bid</span>
-                    <span class="text-white/60 text-2xl text-center font-bold line-through" id="bids-start-value">$2.8M</span>
+                  <div class="flex flex-col bg-black/10 backdrop-blur-sm rounded-lg px-2 md:px-3 lg:px-6 py-2 md:py-3 lg:py-4 border border-white/5">
+                    <span class="text-white/80 text-xs lg:text-sm font-medium uppercase tracking-wide mb-1" id="bids-start-label">Starting Bid</span>
+                    <span class="text-white/60 text-base md:text-lg lg:text-2xl text-center font-bold line-through" id="bids-start-value">$2.8M</span>
                   </div>
-                  <div class="flex flex-col bg-white/5 backdrop-blur-sm rounded-lg px-6 py-4 border border-white/10">
-                    <span class="text-white/80 text-sm font-medium uppercase tracking-wide mb-1" id="bids-total-label">Total Bids</span>
-                    <span class="text-white text-center text-3xl font-bold" id="bids-total-value">47</span>
+                  <div class="flex flex-col bg-white/5 backdrop-blur-sm rounded-lg px-2 md:px-3 lg:px-6 py-2 md:py-3 lg:py-4 border border-white/10">
+                    <span class="text-white/80 text-xs lg:text-sm font-medium uppercase tracking-wide mb-1" id="bids-total-label">Total Bids</span>
+                    <span class="text-white text-center text-lg md:text-xl lg:text-3xl font-bold" id="bids-total-value">47</span>
                   </div>
                 </div>
-                <div class="flex flex-row gap-6 mt-6 justify-center w-full pr-65">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-3 lg:gap-6 mt-3 md:mt-4 lg:mt-6 justify-start w-full">
                   <!-- Bid Now Button -->
-                   <button class="luxury-btn-secondary px-8 py-5 text-lg text-white backdrop-blur-sm bg-black/20 border border-white/60 font-['Montserrat'] font-semibold flex items-center justify-center rounded-lg overflow-hidden relative group transition-all duration-300 hover:bg-white/90 hover:text-black hover:scale-105 tracking-widest uppercase shadow-none">
-                    <span class="relative z-10 transition-all duration-300 group-hover:text-black uppercase group-hover:font-bold">Bid now</span>
-                    <span class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                   <button class="luxury-btn-secondary px-3 md:px-4 lg:px-8 py-2 md:py-3 lg:py-5 text-xs md:text-sm lg:text-lg text-white backdrop-blur-xl bg-black/30 border-2 border-white/50 font-['Montserrat'] font-semibold flex items-center justify-center rounded-xl overflow-hidden relative group transition-all duration-500 hover:bg-white hover:text-black hover:scale-105 tracking-wide md:tracking-widest uppercase shadow-2xl">
+                    <div class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                    <span class="relative z-10 transition-all duration-300 group-hover:text-black uppercase group-hover:font-bold">BID NOW</span>
                   </button>
                   <!-- View Details Button -->
-                  <button class="luxury-btn-secondary px-8 py-5 text-lg text-white bg-black/20 backdrop-blur-sm border border-white/60 font-['Montserrat'] font-semibold flex items-center justify-center rounded-lg overflow-hidden relative group transition-all duration-300 hover:bg-white/90 hover:text-black hover:scale-105 tracking-widest uppercase shadow-none">
+                  <button class="luxury-btn-secondary px-3 md:px-4 lg:px-8 py-2 md:py-3 lg:py-5 text-xs md:text-sm lg:text-lg text-white bg-black/30 backdrop-blur-xl border-2 border-white/50 font-['Montserrat'] font-semibold flex items-center justify-center rounded-xl overflow-hidden relative group transition-all duration-500 hover:bg-white hover:text-black hover:scale-105 tracking-wide md:tracking-widest uppercase shadow-2xl">
+                    <div class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-right"></div>
                     <span class="relative z-10 transition-all duration-300 group-hover:text-black group-hover:font-bold">VIEW DETAILS</span>
-                    <span class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
                   </button>
                 </div>
               </div>
             </div>
-            <!-- Minimalistic Heart Button -->
-            <button class="absolute top-6 right-8 z-20 bg-black/30 border border-white/20 shadow-lg cursor-pointer w-12 h-12 flex items-center justify-center transition-all duration-300 backdrop-blur-lg rounded-full hover:bg-white/15 hover:border-white/40 hover:scale-110 group">
-              <svg class="w-5 h-5 transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" class="text-white group-hover:text-red-300 transition-colors duration-300"/>
+            <!-- Premium Heart Button -->
+            <button class="absolute top-4 lg:top-6 right-4 lg:right-8 z-20 bg-black/40 border border-white/30 shadow-xl cursor-pointer w-10 md:w-12 lg:w-14 h-10 md:h-12 lg:h-14 flex items-center justify-center transition-all duration-300 backdrop-blur-xl rounded-full hover:bg-white/10 hover:border-white/50 hover:scale-110 group overflow-hidden">
+              <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full transform scale-0 group-hover:scale-100"></div>
+              <svg class="w-4 md:w-5 lg:w-6 h-4 md:h-5 lg:h-6 transition-all duration-300 group-hover:scale-110 relative z-10 group-hover:text-red-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" class="text-white group-hover:text-red-500 transition-colors duration-300"/>
               </svg>
             </button>
-            <img class="w-[160vh] h-[75vh] object-cover rounded-md" src="./images/image copy 2.png" alt="">
-            <div class="absolute inset-0 bg-black/20 rounded-md pointer-events-none"></div>
+            <img class="w-full h-[50vh] md:h-[55vh] lg:h-[70vh] xl:h-[85vh] 2xl:h-[90vh] object-cover rounded-none sm:rounded-xl lg:rounded-2xl xl:rounded-3xl shadow-2xl" src="./images/image copy 2.png" alt="">
+            <div class="absolute inset-0 bg-black/20 rounded-none sm:rounded-xl lg:rounded-2xl xl:rounded-3xl pointer-events-none"></div>
           </div>
         </div>
       </div>
     </div>
      <!-- ================= CARDS SECTION ================= -->
-   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-[95.3rem] mt-12 mx-auto">
+   <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 md:gap-6 lg:gap-8 w-full max-w-[120rem] mt-12 mx-auto px-4">
           <!-- Card 1 -->
-        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
+        <div class="card rounded-none sm:rounded-2xl overflow-hidden flex flex-col sm:flex-row w-full hover-card">
             <!-- Image Section -->
-            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
-                <img src="/placeholder.svg?height=320&width=500" alt="Bugatti Chiron" class="image-blur w-full h-full object-cover" />
+            <div class="relative sm:w-3/5 w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-84 overflow-hidden rounded-none sm:rounded-2xl sm:rounded-r-none">
+                <img src="./images/Bugatti.jpeg" alt="Bugatti Chiron" class="image-blur w-full h-full object-cover object-center" />
                 <!-- Heart Button -->
                 <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
                     <input class="heart-checkbox sr-only" type="checkbox" id="heart-1" />
@@ -268,27 +302,27 @@
                 </button>
             </div>
             <!-- Content Section -->
-            <div class="sm:w-2/5 p-6 flex flex-col justify-between">
-                <div class="space-y-4">
+            <div class="sm:w-2/5 w-full p-3 md:p-4 lg:p-6 flex flex-col justify-between">
+                <div class="space-y-2 md:space-y-3 lg:space-y-4">
                     <div>
-                        <h3 class="text-white text-xl font-semibold mb-1">Bugatti Chiron</h3>
+                        <h3 class="text-white text-base md:text-lg lg:text-xl font-semibold mb-1">Bugatti Chiron</h3>
                         <p class="text-white/60 text-sm">2022</p>
                     </div>
-                    <div class="flex gap-2">
-                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">Monaco</span>
-                        <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">23 bids</span>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="badge text-xs text-white/80 px-2 md:px-3 py-1 md:py-1.5 rounded-full">Monaco</span>
+                        <span class="badge text-xs text-white/80 px-2 md:px-3 py-1 md:py-1.5 rounded-full">23 bids</span>
                     </div>
                 </div>
-                <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium mt-6">
+                <button class="minimal-btn w-full py-2 md:py-3 px-4 md:px-6 rounded-lg text-white text-xs md:text-sm font-medium mt-3 md:mt-4 lg:mt-6">
                     View Bid
                 </button>
             </div>
         </div>
         
         <!-- Card 2 -->
-        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
-            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
-                <img src="/placeholder.svg?height=320&width=500" alt="Lamborghini Aventador" class="image-blur w-full h-full object-cover" />
+        <div class="card rounded-none sm:rounded-2xl overflow-hidden flex flex-col sm:flex-row w-full hover-card">
+            <div class="relative sm:w-3/5 w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-84 overflow-hidden rounded-none sm:rounded-2xl sm:rounded-r-none">
+                <img src="./images/Veyron.png" alt="Lamborghini Aventador" class="image-blur w-full h-full object-cover object-center" />
                 <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
                     <input class="heart-checkbox sr-only" type="checkbox" id="heart-2" />
                     <label class="cursor-pointer" for="heart-2">
@@ -316,9 +350,9 @@
         </div>
         
         <!-- Card 3 -->
-        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
-            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
-                <img src="/placeholder.svg?height=320&width=500" alt="Rolls Royce Phantom" class="image-blur w-full h-full object-cover" />
+        <div class="card rounded-none sm:rounded-2xl overflow-hidden flex flex-col sm:flex-row w-full hover-card">
+            <div class="relative sm:w-3/5 w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-84 overflow-hidden rounded-none sm:rounded-2xl sm:rounded-r-none">
+                <img src="./images/Airbrush-Image-Enhancer-1750020637163.jpeg" alt="Rolls Royce Phantom" class="image-blur w-full h-full object-cover object-center" />
                 <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
                     <input class="heart-checkbox sr-only" type="checkbox" id="heart-3" />
                     <label class="cursor-pointer" for="heart-3">
@@ -328,27 +362,27 @@
                     </label>
                 </button>
             </div>
-            <div class="sm:w-2/5 p-6 flex flex-col justify-between">
+            <div class="sm:w-2/5 w-full p-4 sm:p-6 flex flex-col justify-between">
                 <div class="space-y-4">
                     <div>
-                        <h3 class="text-white text-xl font-semibold mb-1">Rolls Royce Phantom</h3>
+                        <h3 class="text-white text-lg sm:text-xl font-semibold mb-1">Rolls Royce Phantom</h3>
                         <p class="text-white/60 text-sm">2020</p>
                     </div>
-                    <div class="flex gap-2">
+                    <div class="flex gap-2 flex-wrap">
                         <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">London</span>
                         <span class="badge text-xs text-white/80 px-3 py-1.5 rounded-full">9 bids</span>
                     </div>
                 </div>
-                <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium mt-6">
+                <button class="minimal-btn w-full py-3 px-6 rounded-lg text-white text-sm font-medium mt-4 sm:mt-6">
                     View Bid
                 </button>
             </div>
         </div>
         
         <!-- Card 4 -->
-        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
-            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
-                <img src="/placeholder.svg?height=320&width=500" alt="Ferrari SF90" class="image-blur w-full h-full object-cover" />
+        <div class="card rounded-none sm:rounded-2xl overflow-hidden flex flex-col sm:flex-row w-full hover-card">
+            <div class="relative sm:w-3/5 w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-84 overflow-hidden rounded-none sm:rounded-2xl sm:rounded-r-none">
+                <img src="./images/Airbrush-Image-Enhancer-1750026042060.jpeg" alt="Ferrari SF90" class="image-blur w-full h-full object-cover object-center" />
                 <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
                     <input class="heart-checkbox sr-only" type="checkbox" id="heart-4" />
                     <label class="cursor-pointer" for="heart-4">
@@ -376,9 +410,9 @@
         </div>
         
         <!-- Card 5 -->
-        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
-            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
-                <img src="/placeholder.svg?height=320&width=500" alt="Porsche 911 Turbo S" class="image-blur w-full h-full object-cover" />
+        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row w-full hover-card">
+            <div class="relative sm:w-3/5 w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-84 overflow-hidden rounded-2xl sm:rounded-l-2xl sm:rounded-r-none">
+                <img src="./images/image.png" alt="Porsche 911 Turbo S" class="image-blur w-full h-full object-cover object-center" />
                 <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
                     <input class="heart-checkbox sr-only" type="checkbox" id="heart-5" />
                     <label class="cursor-pointer" for="heart-5">
@@ -406,9 +440,9 @@
         </div>
         
         <!-- Card 6 -->
-        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row">
-            <div class="relative sm:w-3/5 h-64 sm:h-80 overflow-hidden">
-                <img src="/placeholder.svg?height=320&width=500" alt="Aston Martin DBS" class="image-blur w-full h-full object-cover" />
+        <div class="card rounded-2xl overflow-hidden flex flex-col sm:flex-row w-full hover-card">
+            <div class="relative sm:w-3/5 w-full h-48 sm:h-64 md:h-72 lg:h-80 xl:h-84 overflow-hidden rounded-2xl sm:rounded-l-2xl sm:rounded-r-none">
+                <img src="./images/image copy.png" alt="Aston Martin DBS" class="image-blur w-full h-full object-cover object-center" />
                 <button class="heart-btn absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center">
                     <input class="heart-checkbox sr-only" type="checkbox" id="heart-6" />
                     <label class="cursor-pointer" for="heart-6">

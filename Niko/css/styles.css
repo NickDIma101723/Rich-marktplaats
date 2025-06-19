@@ -294,30 +294,92 @@ html { scroll-behavior: smooth; }
 .card {
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
     transition: all 0.3s ease;
 }
 .card:hover {
     transform: translateY(-4px);
     background: rgba(0, 0, 0, 0.6);
-    border-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 1) !important;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+
+/* Card image responsive border radius */
 .image-blur {
     transition: all 0.4s ease;
 }
+
+/* Mobile: straight edges */
+@media (max-width: 639px) {
+    .image-blur {
+        border-radius: 0 !important;
+    }
+    
+    .card {
+        border-radius: 0 !important;
+    }
+}
+
+/* Tablet and above: smooth edges */
+@media (min-width: 640px) {
+    .image-blur {
+        border-radius: 1rem !important; /* rounded-2xl */
+    }
+    
+    .card {
+        border-radius: 1rem !important; /* rounded-2xl */
+    }
+}
+
+/* Large screens: more rounded */
+@media (min-width: 1024px) {
+    .image-blur {
+        border-radius: 1rem !important; /* Keep consistent */
+    }
+}
+
 .card:hover .image-blur {
     transform: scale(1.02);
 }
 .heart-btn {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.heart-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transition: left 0.6s cubic-bezier(0.4,0,0.2,1);
+    z-index: 0;
+}
+.heart-btn:hover::before {
+    left: 0;
 }
 .heart-btn:hover {
     background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.05);
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+.heart-btn:hover .heart-icon {
+    fill: #e74c3c;
+    stroke: #c0392b;
+}
+.heart-checkbox:checked + label .heart-icon {
+    fill: #e74c3c;
+    stroke: #c0392b;
+    animation: heartBeat 0.5s ease;
+}
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
 }
 .heart-icon {
     transition: all 0.2s ease;
@@ -334,15 +396,186 @@ html { scroll-behavior: smooth; }
 .minimal-btn {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
+}
+.minimal-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transition: left 0.8s cubic-bezier(0.4,0,0.2,1);
+    z-index: -1;
+}
+.minimal-btn:hover::before { 
+    left: 0; 
 }
 .minimal-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
+    color: #181818 !important;
+    font-weight: 600;
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+
+/* Ensure text appears above the white background */
+.minimal-btn span,
+.minimal-btn {
+    position: relative;
+    z-index: 2;
+}
+
 .badge {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+}
+.badge:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .heart-btn {
+        width: 2rem;
+        height: 2rem;
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+    
+    .heart-icon {
+        width: 1rem;
+        height: 1rem;
+    }
+    
+    .badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .heart-btn {
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+    
+    .heart-icon {
+        width: 1.125rem;
+        height: 1.125rem;
+    }
+}
+
+@media (min-width: 1025px) {
+    .heart-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .heart-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}
+
+/* Cool border animation for cards */
+.hover-card {
+    position: relative;
+    overflow: visible;
+}
+
+.hover-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 1rem;
+    background: linear-gradient(90deg, 
+        transparent, 
+        transparent, 
+        rgba(255, 255, 255, 0.8), 
+        rgba(255, 255, 255, 1), 
+        rgba(255, 255, 255, 0.8), 
+        transparent, 
+        transparent
+    );
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: walkingLine 2s linear infinite;
+    z-index: -1;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    padding: 2px;
+}
+
+.hover-card:hover::before {
+    opacity: 1;
+}
+
+.hover-card:hover {
+    border-color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes walkingLine {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .card {
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    .card:hover {
+        border: 1px solid rgba(255, 255, 255, 1) !important;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .card {
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    }
+    
+    .card:hover {
+        border: 1.5px solid rgba(255, 255, 255, 1) !important;
+    }
+}
+
+@media (min-width: 1025px) {
+    .card {
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    .card:hover {
+        border: 2px solid rgba(255, 255, 255, 1) !important;
+    }
 }
