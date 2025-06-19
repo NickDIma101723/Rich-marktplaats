@@ -1,39 +1,75 @@
-const veyronGroup = document.querySelector('.group.relative, .relative.group');
-const veyronVideo = document.getElementById('veyronVideo');
-const veyronImg = document.getElementById('veyronImg');
-const veyronOverlay = document.getElementById('veyronOverlay');
-let veyronLoaded = false;
+const veyronGroups = document.querySelectorAll('.group.relative, .relative.group');
 
-if (veyronGroup && veyronVideo && veyronImg && veyronOverlay) {
-  veyronGroup.addEventListener('mouseenter', () => {
-    if (!veyronLoaded) {
+veyronGroups.forEach(veyronGroup => {
+  const veyronVideo = veyronGroup.querySelector('.category-video');
+  const veyronImg = veyronGroup.querySelector('.category-img');
+  const veyronOverlay = veyronGroup.querySelector('.category-overlay');
+  let veyronLoaded = false;
+  let isHovering = false;
+
+  if (veyronVideo && veyronImg && veyronOverlay) {
+    veyronGroup.addEventListener('mouseenter', () => {
+      isHovering = true;
       veyronOverlay.style.opacity = 0.7;
-      veyronVideo.load();
-      veyronLoaded = true;
-      veyronVideo.addEventListener('canplay', function handler() {
-        veyronOverlay.style.opacity = 0;
+      if (!veyronLoaded) {
+        veyronVideo.load();
+        veyronLoaded = true;
+        veyronVideo.addEventListener('canplay', function handler() {
+          veyronOverlay.style.opacity = 0;
+          veyronVideo.currentTime = 0;
+          veyronVideo.play();
+          veyronVideo.style.opacity = 1;
+          veyronImg.style.opacity = 0;
+          veyronVideo.removeEventListener('canplay', handler);
+        });
+      } else {
         veyronVideo.currentTime = 0;
         veyronVideo.play();
         veyronVideo.style.opacity = 1;
         veyronImg.style.opacity = 0;
-        veyronVideo.removeEventListener('canplay', handler);
-      });
-    } else {
-      veyronVideo.currentTime = 0;
-      veyronVideo.play();
-      veyronVideo.style.opacity = 1;
-      veyronImg.style.opacity = 0;
-    }
-  });
+        veyronOverlay.style.opacity = 0;
+      }
+    });
 
-  veyronGroup.addEventListener('mouseleave', () => {
-    veyronVideo.pause();
-    veyronVideo.style.opacity = 0;
-    veyronImg.style.opacity = 1;
-    veyronOverlay.style.opacity = 0;
+    veyronGroup.addEventListener('mouseleave', () => {
+      isHovering = false;
+      veyronVideo.pause();
+      veyronVideo.style.opacity = 0;
+      veyronImg.style.opacity = 1;
+      veyronOverlay.style.opacity = 0;
+    });
+
+    veyronVideo.addEventListener('error', () => {
+      veyronImg.style.opacity = 1;
+      veyronVideo.style.opacity = 0;
+      veyronOverlay.style.opacity = 0;
+      isHovering = false;
+    });
+  }
+});
+
+// Fade-in on scroll logic for all fade-in elements
+function handleFadeInOnScroll() {
+  const fadeEls = document.querySelectorAll('.fade-in-on-scroll');
+  fadeEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+      el.classList.add('visible');
+    } else {
+      el.classList.remove('visible');
+      // Optionally reset opacity if not being hovered
+      const parentSection = el.closest('.group.relative, .relative.group');
+      if (parentSection && !parentSection.matches(':hover')) {
+        if (el.classList.contains('category-img')) el.style.opacity = 1;
+        if (el.classList.contains('category-video')) el.style.opacity = 0;
+        if (el.classList.contains('category-overlay')) el.style.opacity = 0;
+      }
+    }
   });
 }
 
+// Animation logic for category-animate elements
 function handleCategoryScrollAnimation() {
   const animatedEls = document.querySelectorAll('.category-animate');
   animatedEls.forEach(el => {
@@ -47,30 +83,24 @@ function handleCategoryScrollAnimation() {
   });
 }
 
-function handleFadeInOnScroll() {
-  const fadeEls = document.querySelectorAll('.fade-in-on-scroll');
-  fadeEls.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    if (rect.top < windowHeight * 0.92 && rect.bottom > windowHeight * 0.08) {
-      el.classList.add('visible');
-      // Reset inline styles for Bugatti section elements
-      if (el === veyronImg) {
-        veyronImg.style.opacity = 1; // Ensure image is visible by default
-        veyronVideo.style.opacity = 0; // Ensure video is hidden
-        veyronOverlay.style.opacity = 0; // Ensure overlay is hidden
-        veyronVideo.pause(); // Pause video if playing
-      }
-    } else {
-      el.classList.remove('visible');
-    }
-  });
+// Debounce helper
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
 
-window.addEventListener('scroll', () => {
+// Event listeners
+window.addEventListener('scroll', debounce(() => {
   handleCategoryScrollAnimation();
   handleFadeInOnScroll();
-});
+}, 50));
 
 window.addEventListener('resize', () => {
   handleCategoryScrollAnimation();
