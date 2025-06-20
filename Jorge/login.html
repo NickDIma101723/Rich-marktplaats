@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUREA MONSIEUR - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./login-styles.css">
+</head>
+<body class="min-h-screen bg-black text-white overflow-hidden">
+    <!-- Main Container -->
+    <div class="flex min-h-screen">
+        
+        <!-- Left Side - Login/Signup Form -->
+        <div class="flex-1 flex items-center justify-center p-8 lg:p-12 relative z-10">
+            <div class="w-full max-w-xl space-y-8">
+                
+                <!-- Logo/Brand -->
+                <div class="text-center mb-10">
+                    <h1 class="text-3xl lg:text-4xl font-bold font-['Playfair_Display'] mb-3 tracking-wider">
+                        AUREA MONSIEUR
+                    </h1>
+                    <div class="w-24 h-0.5 bg-white mx-auto mb-5"></div>
+                    <p class="text-white/60 font-['Montserrat'] text-sm tracking-wide">
+                        LUXURY MARKETPLACE
+                    </p>
+                </div>
+
+                <!-- Form Container -->
+                <div class="form-container">
+                    
+                    <!-- Login Form -->
+                    <div id="login-form" class="auth-form active">
+                        <div class="text-center mb-8">
+                            <h2 class="text-2xl lg:text-3xl font-bold font-['Montserrat'] mb-3">Welcome Back</h2>
+                            <p class="text-white/60 font-['Montserrat'] text-sm">Sign in to access exclusive luxury items</p>
+                        </div>
+
+                        <form class="space-y-6" id="login-submit-form">
+                            <!-- Email Field -->
+                            <div class="form-group">
+                                <label class="block text-white text-sm font-['Montserrat'] mb-2 font-medium">Email</label>
+                                <input 
+                                    type="email" 
+                                    id="login-email"
+                                    required
+                                    class="luxury-input w-full px-4 py-4 bg-black/40 border border-white/30 text-white placeholder-white/50 font-['Montserrat'] focus:outline-none focus:border-white/80 transition-all duration-300 text-sm backdrop-blur-xl"
+                                    placeholder="Enter your email address"
+                                />
+                            </div>
+
+                            <!-- Password Field -->
+                            <div class="form-group">
+                                <label class="block text-white text-sm font-['Montserrat'] mb-2 font-medium">Password</label>
+                                <input 
+                                    type="password" 
+                                    id="login-password"
+                                    required
+                                    class="luxury-input w-full px-4 py-4 bg-black/40 border border-white/30 text-white placeholder-white/50 font-['Montserrat'] focus:outline-none focus:border-white/80 transition-all duration-300 text-sm backdrop-blur-xl"
+                                    placeholder="Enter your password"
+                                />
+                            </div>
+
+                            <!-- Remember Me & Forgot Password -->
+                            <div class="flex items-center justify-between text-sm">
+                                <label class="flex items-center text-white/80 font-['Montserrat']">
+                                    <input type="checkbox" class="mr-3 accent-white scale-110">
+                                    Remember me
+                                </label>
+                                <a href="#" class="text-white/80 hover:text-white transition-colors duration-200 font-['Montserrat'] hover:underline">
+                                    Forgot password?
+                                </a>
+                            </div>
+
+                            <!-- Login Button -->
+                            <button type="submit" class="luxury-btn w-full py-4 bg-white text-black font-['Montserrat'] font-semibold text-sm tracking-wide transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] transform">
+                                SIGN IN
+                            </button>
+
+                            <!-- Divider -->
+                            <div class="flex items-center my-6">
+                                <div class="flex-1 h-px bg-white/20"></div>
+                                <span class="px-4 text-white/60 text-xs font-['Montserrat'] tracking-wide">OR</span>
+                                <div class="flex-1 h-px bg-white/20"></div>
+                            </div>
+
+                            <!-- Social Login (Optional) -->
+                            <button type="button" class="social-btn w-full py-3 border border-white/30 text-white font-['Montserrat'] text-sm tracking-wide transition-all duration-300 hover:bg-white/10 hover:border-white/50">
+                                Continue with Google
+                            </button>
+
+                            <!-- Switch to Signup -->
+                            <div class="text-center mt-6">
+                                <p class="text-white/60 font-['Montserrat'] text-sm">
+                                    Don't have an account?
+                                    <button type="button" id="show-signup" class="text-white hover:text-white/80 transition-colors duration-200 ml-1 underline font-medium">
+                                        Sign up
+                                    </button>
+                                </p>
+                                
+                                <!-- Back to Home -->
+                                <div class="mt-4">
+                                    <a href="../Niko/index.html" class="inline-flex items-center text-white/60 hover:text-white transition-colors duration-200 font-['Montserrat'] text-sm">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                                        </svg>
+                                        Back to marketplace
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Signup Form -->
+                    <div id="signup-form" class="auth-form">
+                        <div class="text-center mb-4">
+                            <h2 class="text-2xl lg:text-3xl font-bold font-['Montserrat'] mb-1">Create Account</h2>
+                            <p class="text-white/60 font-['Montserrat'] text-sm">Join the exclusive luxury marketplace</p>
+                        </div>
+
+                        <form class="space-y-2.5" id="signup-submit-form">
+                            <!-- Full Name Field -->
+                            <div class="form-group">
+                                <label class="block text-white text-sm font-['Montserrat'] mb-2 font-medium">Full Name</label>
+                                <input 
+                                    type="text" 
+                                    id="signup-name"
+                                    required
+                                    class="luxury-input w-full px-4 py-4 bg-black/40 border border-white/30 text-white placeholder-white/50 font-['Montserrat'] focus:outline-none focus:border-white/80 transition-all duration-300 text-sm backdrop-blur-xl"
+                                    placeholder="Enter your full name"
+                                />
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="form-group">
+                                <label class="block text-white text-sm font-['Montserrat'] mb-2 font-medium">Email</label>
+                                <input 
+                                    type="email" 
+                                    id="signup-email"
+                                    required
+                                    class="luxury-input w-full px-4 py-4 bg-black/40 border border-white/30 text-white placeholder-white/50 font-['Montserrat'] focus:outline-none focus:border-white/80 transition-all duration-300 text-sm backdrop-blur-xl"
+                                    placeholder="Enter your email address"
+                                />
+                            </div>
+
+                            <!-- Password Field -->
+                            <div class="form-group">
+                                <label class="block text-white text-sm font-['Montserrat'] mb-2 font-medium">Password</label>
+                                <input 
+                                    type="password" 
+                                    id="signup-password"
+                                    required
+                                    class="luxury-input w-full px-4 py-4 bg-black/40 border border-white/30 text-white placeholder-white/50 font-['Montserrat'] focus:outline-none focus:border-white/80 transition-all duration-300 text-sm backdrop-blur-xl"
+                                    placeholder="Create a password"
+                                />
+                            </div>
+
+                            <!-- Confirm Password Field -->
+                            <div class="form-group">
+                                <label class="block text-white text-sm font-['Montserrat'] mb-2 font-medium">Confirm Password</label>
+                                <input 
+                                    type="password" 
+                                    id="signup-confirm-password"
+                                    required
+                                    class="luxury-input w-full px-4 py-4 bg-black/40 border border-white/30 text-white placeholder-white/50 font-['Montserrat'] focus:outline-none focus:border-white/80 transition-all duration-300 text-sm backdrop-blur-xl"
+                                    placeholder="Confirm your password"
+                                />
+                            </div>
+
+                            <!-- Terms Checkbox -->
+                            <div class="flex items-start text-sm">
+                                <input type="checkbox" required class="mr-3 mt-1 accent-white scale-110">
+                                <label class="text-white/80 font-['Montserrat'] leading-relaxed">
+                                    I agree to the <a href="#" class="text-white hover:underline">Terms of Service</a> and <a href="#" class="text-white hover:underline">Privacy Policy</a>
+                                </label>
+                            </div>
+
+                            <!-- Signup Button -->
+                            <button type="submit" class="luxury-btn w-full py-4 bg-white text-black font-['Montserrat'] font-semibold text-sm tracking-wide transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] transform">
+                                CREATE ACCOUNT
+                            </button>
+
+                            <!-- Switch to Login -->
+                            <div class="text-center mt-2">
+                                <p class="text-white/60 font-['Montserrat'] text-sm">
+                                    Already have an account?
+                                    <button type="button" id="show-login" class="text-white hover:text-white/80 transition-colors duration-200 ml-1 underline font-medium">
+                                        Sign in
+                                    </button>
+                                </p>
+                                
+                                <!-- Back to Home -->
+                                <div class="mt-3">
+                                    <a href="../Niko/index.html" class="inline-flex items-center text-white/60 hover:text-white transition-colors duration-200 font-['Montserrat'] text-sm">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                                        </svg>
+                                        Back to marketplace
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Video Background -->
+        <div class="hidden lg:flex flex-1 relative overflow-hidden">
+            <!-- Video Background -->
+            <video 
+                autoplay 
+                muted 
+                loop 
+                class="absolute inset-0 w-full h-full object-cover"
+                poster="../Niko/images/Bugatti.jpeg"
+            >
+                <source src="../Niko/video/Bugatti.mp4" type="video/mp4">
+                <source src="../Niko/video/Monsieur.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Video Overlay -->
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+            
+            <!-- Content Overlay -->
+            <div class="relative z-10 flex flex-col justify-center items-center text-center p-12 w-full">
+                <div class="max-w-md space-y-6">
+                    <h3 class="text-4xl lg:text-5xl font-bold font-['Playfair_Display'] leading-tight">
+                        Luxury Awaits
+                    </h3>
+                    <p class="text-xl font-['Montserrat'] text-white/80 leading-relaxed">
+                        Join the world's most exclusive marketplace for luxury cars, yachts, and premium accessories.
+                    </p>
+                    <div class="flex items-center justify-center space-x-8 mt-8">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold font-['Montserrat']">10K+</div>
+                            <div class="text-sm text-white/60 font-['Montserrat']">Luxury Items</div>
+                        </div>
+                        <div class="w-px h-12 bg-white/30"></div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold font-['Montserrat']">500+</div>
+                            <div class="text-sm text-white/60 font-['Montserrat']">Premium Brands</div>
+                        </div>
+                        <div class="w-px h-12 bg-white/30"></div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold font-['Montserrat']">50K+</div>
+                            <div class="text-sm text-white/60 font-['Montserrat']">Members</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success/Error Notification -->
+    <div id="notification" class="fixed top-4 left-1/2 transform -translate-x-1/2 px-6 py-3 text-white text-sm font-['Montserrat'] font-medium shadow-lg z-50 border opacity-0 transition-all duration-300 max-w-md mx-4 text-center">
+    </div>
+
+    <script src="./login-script.js"></script>
+</body>
+</html>

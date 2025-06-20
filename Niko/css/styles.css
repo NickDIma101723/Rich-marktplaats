@@ -223,7 +223,6 @@ html { scroll-behavior: smooth; }
   width: 32px;
   height: 54px;
   border: 2.5px solid #fff;
-  border-radius: 16px;
   position: relative;
   background: rgba(255,255,255,0.08);
   margin-bottom: 0;
@@ -236,7 +235,6 @@ html { scroll-behavior: smooth; }
   width: 4px;
   height: 14px;
   background: #fff;
-  border-radius: 2px;
   position: absolute;
   left: 50%;
   top: 10px;
@@ -265,7 +263,8 @@ html { scroll-behavior: smooth; }
 }
 .cart-btn:hover::before { left: 0; }
 .cart-btn:hover {
- 
+  transform: translateY(-3px);
+  color: black;
 }
 .cart-btn-text {
   font-size: 0.95rem;
@@ -304,38 +303,9 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Card image responsive border radius */
+/* Card image responsive border radius - ALL SHARP EDGES */
 .image-blur {
     transition: all 0.4s ease;
-}
-
-/* Mobile: straight edges */
-@media (max-width: 639px) {
-    .image-blur {
-        border-radius: 0 !important;
-    }
-    
-    .card {
-        border-radius: 0 !important;
-    }
-}
-
-/* Tablet and above: smooth edges */
-@media (min-width: 640px) {
-    .image-blur {
-        border-radius: 1rem !important; /* rounded-2xl */
-    }
-    
-    .card {
-        border-radius: 1rem !important; /* rounded-2xl */
-    }
-}
-
-/* Large screens: more rounded */
-@media (min-width: 1024px) {
-    .image-blur {
-        border-radius: 1rem !important; /* Keep consistent */
-    }
 }
 
 .card:hover .image-blur {
@@ -452,49 +422,7 @@ html { scroll-behavior: smooth; }
     transform: translateY(-1px);
 }
 
-/* Responsive adjustments */
-@media (max-width: 640px) {
-    .heart-btn {
-        width: 2rem;
-        height: 2rem;
-        top: 0.75rem;
-        right: 0.75rem;
-    }
-    
-    .heart-icon {
-        width: 1rem;
-        height: 1rem;
-    }
-    
-    .badge {
-        font-size: 0.7rem;
-        padding: 0.25rem 0.5rem;
-    }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-    .heart-btn {
-        width: 2.25rem;
-        height: 2.25rem;
-    }
-    
-    .heart-icon {
-        width: 1.125rem;
-        height: 1.125rem;
-    }
-}
-
-@media (min-width: 1025px) {
-    .heart-btn {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-    
-    .heart-icon {
-        width: 1.25rem;
-        height: 1.25rem;
-    }
-}
+/* Responsive adjustments - REMOVED: Now handled by Tailwind classes in HTML */
 
 /* Cool border animation for cards */
 .hover-card {
@@ -502,6 +430,7 @@ html { scroll-behavior: smooth; }
     overflow: visible;
 }
 
+/* Card hover border animation - simplified */
 .hover-card::before {
     content: '';
     position: absolute;
@@ -509,7 +438,6 @@ html { scroll-behavior: smooth; }
     left: -2px;
     right: -2px;
     bottom: -2px;
-    border-radius: 1rem;
     background: linear-gradient(90deg, 
         transparent, 
         transparent, 
@@ -549,33 +477,304 @@ html { scroll-behavior: smooth; }
     }
 }
 
-/* Responsive adjustments */
+/* ================= MOBILE NAVIGATION STYLES ================= */
+
+/* Mobile navbar - force it to show on mobile screens */
+#navbar-mobile {
+  display: block !important;
+}
+
+@media (min-width: 1024px) {
+  #navbar-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  #navbar-mobile {
+    display: block !important;
+  }
+  
+  .navbar-large, .navbar-small {
+    display: none !important;
+  }
+}
+
+/* Hamburger menu styling */
+.hamburger-line {
+  transform-origin: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 24px;
+  height: 2px;
+  background: white !important;
+  display: block;
+  margin: 3px 0;
+  border-radius: 1px;
+}
+
+#mobile-menu-toggle {
+  cursor: pointer !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 8px !important;
+  z-index: 10001 !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+.hamburger-open .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-open .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.hamburger-open .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile menu overlay */
+#mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: white !important;
+}
+
+#mobile-menu-overlay.menu-open {
+  transform: translateX(0);
+}
+
+/* Mobile navigation links */
+.mobile-nav-link {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem 0 !important;
+  font-size: 1.8rem !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.08em !important;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  text-transform: uppercase;
+  color: white !important;
+  text-decoration: none !important;
+  display: block !important;
+}
+
+.mobile-nav-link:last-child {
+  border-bottom: none !important;
+}
+
+.mobile-nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ffffff, #ffffff60);
+  transition: width 0.4s ease;
+}
+
+.mobile-nav-link:hover::before,
+.mobile-nav-link:active::before {
+  width: 100%;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  color: #ffffff !important;
+  padding-left: 2rem !important;
+  transform: translateX(15px);
+  font-weight: 400 !important;
+}
+
+/* Ensure all text in mobile menu is visible */
+#mobile-menu-overlay * {
+  color: white !important;
+}
+
+#mobile-menu-overlay ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#mobile-menu-overlay nav {
+  width: 100%;
+}
+
+/* Force mobile navbar visibility on all mobile screens */
+@media (max-width: 768px) {
+  #navbar-mobile {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .navbar-large, .navbar-small {
+    display: none !important;
+  }
+}
+
 @media (max-width: 640px) {
-    .card {
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    }
-    
-    .card:hover {
-        border: 1px solid rgba(255, 255, 255, 1) !important;
-    }
+  #navbar-mobile {
+    display: block !important;
+  }
+  
+  .navbar-large, .navbar-small {
+    display: none !important;
+  }
+  
+  .mobile-nav-link {
+    font-size: 1.5rem !important;
+    padding: 1.25rem 0 !important;
+  }
 }
 
-@media (min-width: 641px) and (max-width: 1024px) {
-    .card {
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
-    }
-    
-    .card:hover {
-        border: 1.5px solid rgba(255, 255, 255, 1) !important;
-    }
+/* ================= END MOBILE NAVIGATION ================= */
+
+/* ================= RESPONSIVE DESIGN IMPROVEMENTS ================= */
+
+/* Mobile First Approach */
+@media (max-width: 640px) {
+  .aurea-slide, .monsieur-slide {
+    margin-left: 0 !important;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .category-img, .category-video {
+    height: 16rem !important;
+  }
+  
+  .scroll-hint-luxury {
+    display: none;
+  }
+  
+  /* Ensure mobile navbar is always visible on small screens */
+  #navbar-mobile {
+    display: flex !important;
+  }
+  
+  .navbar-large, .navbar-small {
+    display: none !important;
+  }
+  
+  /* Adjust mobile nav links for small screens */
+  .mobile-nav-link {
+    font-size: 1.25rem;
+    padding: 0.75rem 0;
+  }
 }
 
-@media (min-width: 1025px) {
-    .card {
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    }
-    
-    .card:hover {
-        border: 2px solid rgba(255, 255, 255, 1) !important;
-    }
+@media (max-width: 768px) {
+  .navbar-large, .navbar-small {
+    display: none !important;
+  }
+  
+  /* Show mobile navbar only */
+  #navbar-mobile {
+    display: flex !important;
+  }
+  
+  /* Adjust video height for tablets */
+  .category-img, .category-video {
+    height: 20rem !important;
+  }
+  
+  /* Hide scroll indicators on mobile */
+  .scroll-cue {
+    display: none;
+  }
 }
+
+@media (max-width: 1024px) {
+  /* Hide desktop navbars on tablet and mobile */
+  .navbar-large, .navbar-small {
+    display: none !important;
+  }
+  
+  /* Show mobile navbar */
+  #navbar-mobile {
+    display: flex !important;
+  }
+  
+  /* Adjust category text positioning */
+  .category-animate {
+    font-size: clamp(1rem, 4vw, 2rem) !important;
+  }
+}
+
+/* Ensure mobile navigation works properly */
+@media (min-width: 1024px) {
+  #navbar-mobile {
+    display: none !important;
+  }
+}
+
+/* ================= MOBILE TOUCH IMPROVEMENTS ================= */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover effects on touch devices for categories */
+  .group:hover .category-video {
+    opacity: 0 !important;
+  }
+  
+  .group:hover .category-img {
+    opacity: 1 !important;
+  }
+  
+  .group:hover .category-overlay {
+    opacity: 0 !important;
+  }
+  
+  /* Make buttons more touch-friendly */
+  button, .explore-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ================= IMPROVED RESPONSIVE TYPOGRAPHY ================= */
+.responsive-title {
+  font-size: clamp(1.5rem, 5vw, 4rem);
+}
+
+.responsive-subtitle {
+  font-size: clamp(1rem, 3vw, 2rem);
+}
+
+.responsive-text {
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 480px) {
+  .luxury-switcher-container {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .expand-line {
+    width: 30% !important;
+  }
+  
+  /* Make category content more readable on small screens */
+  .category-animate {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+}
+
+/* ================= EXISTING STYLES CONTINUE BELOW ================= */
+

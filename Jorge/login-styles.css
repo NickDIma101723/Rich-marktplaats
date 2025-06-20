@@ -1,0 +1,333 @@
+/* Login Page Specific Styles */
+:root {
+    --primary-white: #ffffff;
+    --primary-black: #000000;
+    --glass-bg: rgba(0, 0, 0, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-muted: rgba(255, 255, 255, 0.6);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Hide scrollbars */
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* Form Animation */
+.form-container {
+    position: relative;
+    min-height: 500px;
+}
+
+.auth-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.auth-form.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+/* Input Styles */
+.luxury-input {
+    position: relative;
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.luxury-input:focus {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.luxury-input:hover {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Form Group Animation */
+.form-group {
+    position: relative;
+}
+
+.form-group:focus-within label {
+    color: var(--primary-white);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Button Styles */
+.luxury-btn {
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.luxury-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.9), 
+        rgba(255, 255, 255, 1), 
+        rgba(255, 255, 255, 0.9)
+    );
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.luxury-btn:hover::before {
+    left: 0;
+}
+
+.luxury-btn:hover {
+    color: var(--primary-black) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.luxury-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Social Button */
+.social-btn {
+    position: relative;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.05em;
+    overflow: hidden;
+}
+
+.social-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.social-btn:hover::before {
+    left: 0;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Notification Styles */
+#notification {
+    border-radius: 0;
+    backdrop-filter: blur(20px);
+}
+
+#notification.success {
+    background: rgba(34, 197, 94, 0.9);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+#notification.error {
+    background: rgba(239, 68, 68, 0.9);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+#notification.visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* Video Overlay Effects */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .luxury-input {
+        padding: 1rem !important;
+    }
+    
+    .luxury-btn {
+        padding: 1rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        min-height: auto;
+    }
+    
+    .auth-form {
+        position: relative;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .auth-form:not(.active) {
+        display: none;
+    }
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Page Load Animation */
+.form-container {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus states for accessibility */
+button:focus,
+input:focus,
+a:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+input[type="checkbox"]:checked {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+input[type="checkbox"]:checked::before {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+
+input[type="checkbox"]:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+}
+
+/* Link hover effects */
+a {
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    transform: translateY(-1px);
+}
+
+/* Error/Success states for inputs */
+.luxury-input.error {
+    border-color: rgba(239, 68, 68, 0.8) !important;
+    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2);
+}
+
+.luxury-input.success {
+    border-color: rgba(34, 197, 94, 0.8) !important;
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.2);
+}
+
+/* Loading state for buttons */
+.luxury-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.luxury-btn.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

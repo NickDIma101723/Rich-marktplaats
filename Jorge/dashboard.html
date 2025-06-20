@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Luxury Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        
+        .dashboard-bg {
+            background: linear-gradient(145deg, #000000 0%, #1a1a1a 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+        
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .status-winning {
+            color: #4ade80;
+        }
+        
+        .status-outbid {
+            color: #f87171;
+        }
+        
+        .status-sold {
+            color: #a78bfa;
+        }
+        
+        .status-active {
+            color: #60a5fa;
+        }
+        
+        .auction-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .auction-btn:hover {
+            transform: translateY(-1px);
+        }
+        
+        .auction-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .bid-card {
+            transition: all 0.3s ease;
+        }
+        
+        .bid-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .message-item {
+            transition: all 0.2s ease;
+        }
+        
+        .message-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .message-item.unread {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 3px solid #3b82f6;
+        }
+        
+        .form-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            outline: none;
+        }
+        
+        /* Floating background elements */
+        .bg-blur-1 {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 24rem;
+            height: 24rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 50%;
+            filter: blur(3rem);
+            pointer-events: none;
+        }
+        
+        .bg-blur-2 {
+            position: absolute;
+            bottom: 25%;
+            right: 25%;
+            width: 20rem;
+            height: 20rem;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 50%;
+            filter: blur(3rem);
+            pointer-events: none;
+        }
+        
+        .bg-blur-3 {
+            position: absolute;
+            top: 50%;
+            right: 33%;
+            width: 16rem;
+            height: 16rem;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 50%;
+            filter: blur(2rem);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="dashboard-bg text-white min-h-screen overflow-x-hidden">
+    
+    <!-- Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-blur-3"></div>
+    </div>
+
+    <!-- Dashboard Type Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="glass-effect rounded-xl p-2">
+            <button id="toggle-minimal" class="px-4 py-2 rounded-lg text-sm font-medium bg-white/10 text-white">
+                Minimal
+            </button>
+            <button id="toggle-luxury" class="px-4 py-2 rounded-lg text-sm font-medium text-white/60">
+                Luxury
+            </button>
+        </div>
+    </div>
+
+    <!-- Minimal Dashboard -->
+    <div id="minimal-dashboard" class="flex min-h-screen">
+        <!-- Left Navbar -->
+        <div class="w-56 border-r border-white/10 flex flex-col">
+            <!-- Logo/Profile -->
+            <div class="p-8 border-b border-white/10">
+                <div class="mb-6">
+                    <h2 class="text-xl font-medium">Alexander</h2>
+                    <p class="text-white/60">Montague</p>
+                </div>
+                <div class="text-sm text-white/60 mb-1">Portfolio</div>
+                <div class="text-lg font-light">$2.4M</div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 p-6">
+                <div class="space-y-1">
+                    <button class="nav-item active w-full text-left px-4 py-3 rounded-lg" data-tab="dashboard">
+                        <div class="flex items-center justify-between">
+                            <span>Dashboard</span>
+                        </div>
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg text-white/60" data-tab="bids">
+                        <div class="flex items-center justify-between">
+                            <span>My Bids</span>
+                        </div>
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg text-white/60" data-tab="browse">
+                        <div class="flex items-center justify-between">
+                            <span>Browse</span>
+                        </div>
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg text-white/60" data-tab="sell">
+                        <div class="flex items-center justify-between">
+                            <span>Sell</span>
+                        </div>
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg text-white/60" data-tab="watchlist">
+                        <div class="flex items-center justify-between">
+                            <span>Watchlist</span>
+                        </div>
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg text-white/60" data-tab="messages">
+                        <div class="flex items-center justify-between">
+                            <span>Messages</span>
+                            <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                        </div>
+                    </button>
+                    <button class="nav-item w-full text-left px-4 py-3 rounded-lg text-white/60" data-tab="settings">
+                        <div class="flex items-center justify-between">
+                            <span>Settings</span>
+                        </div>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <div class="p-8 border-b border-white/10">
+                <h1 id="page-title" class="text-2xl font-medium mb-2">Dashboard</h1>
+                <div id="page-stats" class="flex items-center gap-8 text-white/60 text-sm">
+                    <span>12 Active Bids</span>
+                    <span>47 Items Bought</span>
+                    <span>87% Win Rate</span>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 p-8">
+                <div class="max-w-4xl">
+                    <!-- Dashboard Content -->
+                    <div id="dashboard-content">
+                        <h2 class="text-lg font-medium mb-8">Active Bids</h2>
+                        <div class="space-y-6" id="minimal-bids">
+                            <!-- Bid cards will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- My Bids Content -->
+                    <div id="bids-content" class="hidden">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-lg font-medium">My Bids History</h2>
+                            <div class="flex gap-3">
+                                <button class="px-4 py-2 bg-white/10 rounded-lg text-sm font-medium hover:bg-white/20 transition-all duration-300">
+                                    All
+                                </button>
+                                <button class="px-4 py-2 bg-green-500/20 text-green-400 rounded-lg text-sm font-medium">
+                                    Won
+                                </button>
+                                <button class="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg text-sm font-medium">
+                                    Lost
+                                </button>
+                                <button class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg text-sm font-medium">
+                                    Active
+                                </button>
+                            </div>
+                        </div>
+                        <div class="space-y-6" id="all-bids">
+                            <!-- All bids will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Messages Content -->
+                    <div id="messages-content" class="hidden">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-lg font-medium">Messages</h2>
+                            <button class="px-4 py-2 bg-white/10 rounded-lg text-sm font-medium hover:bg-white/20 transition-all duration-300">
+                                Mark All Read
+                            </button>
+                        </div>
+                        <div class="space-y-4" id="messages-list">
+                            <!-- Messages will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Sell Content -->
+                    <div id="sell-content" class="hidden">
+                        <h2 class="text-lg font-medium mb-8">Sell Your Luxury Items</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Sell Form -->
+                            <div class="glass-effect rounded-2xl p-8">
+                                <h3 class="text-xl font-semibold mb-6">List New Item</h3>
+                                <form id="sell-form" class="space-y-6">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Item Title</label>
+                                        <input type="text" class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-white/60" placeholder="e.g., 2024 Bugatti Chiron">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Category</label>
+                                        <select class="form-input w-full px-4 py-3 rounded-lg text-white">
+                                            <option value="">Select Category</option>
+                                            <option value="cars">Luxury Cars</option>
+                                            <option value="watches">Watches</option>
+                                            <option value="accessories">Accessories</option>
+                                            <option value="yachts">Yachts</option>
+                                            <option value="planes">Private Jets</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Starting Price</label>
+                                        <input type="text" class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-white/60" placeholder="$0.00">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Description</label>
+                                        <textarea class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-white/60 h-32" placeholder="Describe your luxury item..."></textarea>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Auction Duration</label>
+                                        <select class="form-input w-full px-4 py-3 rounded-lg text-white">
+                                            <option value="3">3 Days</option>
+                                            <option value="7">7 Days</option>
+                                            <option value="14">14 Days</option>
+                                            <option value="30">30 Days</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="w-full py-3 bg-white text-black rounded-lg font-semibold hover:bg-white/90 transition-colors">
+                                        List Item for Auction
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- My Listings -->
+                            <div class="glass-effect rounded-2xl p-8">
+                                <h3 class="text-xl font-semibold mb-6">My Active Listings</h3>
+                                <div class="space-y-4" id="my-listings">
+                                    <!-- Listings will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Browse Content -->
+                    <div id="browse-content" class="hidden">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-lg font-medium">Browse Auctions</h2>
+                            <div class="flex gap-3">
+                                <input type="text" class="form-input px-4 py-2 rounded-lg text-white placeholder-white/60" placeholder="Search items...">
+                                <select class="form-input px-4 py-2 rounded-lg text-white">
+                                    <option value="">All Categories</option>
+                                    <option value="cars">Luxury Cars</option>
+                                    <option value="watches">Watches</option>
+                                    <option value="accessories">Accessories</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="browse-items">
+                            <!-- Browse items will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Watchlist Content -->
+                    <div id="watchlist-content" class="hidden">
+                        <h2 class="text-lg font-medium mb-8">My Watchlist</h2>
+                        <div class="space-y-6" id="watchlist-items">
+                            <!-- Watchlist items will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div id="settings-content" class="hidden">
+                        <h2 class="text-lg font-medium mb-8">Account Settings</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div class="glass-effect rounded-2xl p-8">
+                                <h3 class="text-xl font-semibold mb-6">Profile Information</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Full Name</label>
+                                        <input type="text" class="form-input w-full px-4 py-3 rounded-lg text-white" value="Alexander Montague">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Email</label>
+                                        <input type="email" class="form-input w-full px-4 py-3 rounded-lg text-white" value="alexander@example.com">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Phone</label>
+                                        <input type="tel" class="form-input w-full px-4 py-3 rounded-lg text-white" value="+1 (555) 123-4567">
+                                    </div>
+                                    <button class="w-full py-3 bg-white text-black rounded-lg font-semibold hover:bg-white/90 transition-colors">
+                                        Update Profile
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="glass-effect rounded-2xl p-8">
+                                <h3 class="text-xl font-semibold mb-6">Notification Preferences</h3>
+                                <div class="space-y-4">
+                                    <label class="flex items-center gap-3">
+                                        <input type="checkbox" class="w-4 h-4" checked>
+                                        <span>Email notifications for outbid alerts</span>
+                                    </label>
+                                    <label class="flex items-center gap-3">
+                                        <input type="checkbox" class="w-4 h-4" checked>
+                                        <span>SMS notifications for auction endings</span>
+                                    </label>
+                                    <label class="flex items-center gap-3">
+                                        <input type="checkbox" class="w-4 h-4">
+                                        <span>Weekly newsletter</span>
+                                    </label>
+                                    <label class="flex items-center gap-3">
+                                        <input type="checkbox" class="w-4 h-4" checked>
+                                        <span>New item recommendations</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data
+        const recentBids = [
+            {
+                id: 1,
+                item: "2024 Bugatti Chiron Super Sport",
+                currentBid: "$13.2M",
+                yourBid: "$13.2M",
+                status: "winning",
+                timeLeft: "2h 45m",
+                image: "/placeholder.svg?height=120&width=180",
+                category: "Luxury Cars",
+                bidders: 47,
+            },
+            {
+                id: 2,
+                item: "Patek Philippe Nautilus 5711",
+                currentBid: "$180K",
+                yourBid: "$175K",
+                status: "outbid",
+                timeLeft: "1d 12h",
+                image: "/placeholder.svg?height=120&width=180",
+                category: "Watches",
+                bidders: 23,
+            },
+            {
+                id: 3,
+                item: "Hermès Birkin Himalaya",
+                currentBid: "$45K",
+                yourBid: "$45K",
+                status: "winning",
+                timeLeft: "5h 20m",
+                image: "/placeholder.svg?height=120&width=180",
+                category: "Accessories",
+                bidders: 15,
+            },
+            {
+                id: 4,
+                item: "Rolex Daytona Platinum",
+                currentBid: "$95K",
+                yourBid: "$90K",
+                status: "outbid",
+                timeLeft: "3h 15m",
+                image: "/placeholder.svg?height=120&width=180",
+                category: "Watches",
+                bidders: 31,
+            },
+        ];
+
+        const allBids = [
+            ...recentBids,
+            {
+                id: 5,
+                item: "Ferrari 488 Pista",
+                currentBid: "$450K",
+                yourBid: "$420K",
+                status: "lost",
+                timeLeft: "Ended",
+                image: "/placeholder.svg?height=120&width=180",
+                category: "Luxury Cars",
+                bidders: 28,
+            },
+            {
+                id: 6,
+                item: "Audemars Piguet Royal Oak",
+                currentBid: "$85K",
+                yourBid: "$85K",
+                status: "won",
+                timeLeft: "Ended",
+                image: "/placeholder.svg?height=120&width=180",
+                category: "Watches",
+                bidders: 19,
+            },
+        ];
+
+        const messages = [
+            {
+                id: 1,
+                from: "AUREA Support",
+                subject: "Congratulations! You won the auction",
+                preview: "Your bid on Audemars Piguet Royal Oak has been successful...",
+                time: "2h ago",
+                unread: true,
+                type: "success"
+            },
+            {
+                id: 2,
+                from: "Auction Alert",
+                subject: "You've been outbid on Patek Philippe",
+                preview: "Another bidder has placed a higher bid on the item you're watching...",
+                time: "4h ago",
+                unread: true,
+                type: "warning"
+            },
+            {
+                id: 3,
+                from: "AUREA Team",
+                subject: "New luxury cars added to auction",
+                preview: "Check out the latest collection of luxury vehicles now available...",
+                time: "1d ago",
+                unread: false,
+                type: "info"
+            },
+            {
+                id: 4,
+                from: "Payment Team",
+                subject: "Payment confirmation for Rolex Daytona",
+                preview: "Your payment has been processed successfully...",
+                time: "2d ago",
+                unread: false,
+                type: "success"
+            },
+        ];
+
+        const myListings = [
+            {
+                id: 1,
+                item: "2020 Lamborghini Huracán",
+                currentBid: "$220K",
+                startingBid: "$180K",
+                status: "active",
+                timeLeft: "3d 12h",
+                bidders: 12,
+                views: 847
+            },
+            {
+                id: 2,
+                item: "Cartier Santos Watch",
+                currentBid: "$8.5K",
+                startingBid: "$6K",
+                status: "active",
+                timeLeft: "1d 8h",
+                bidders: 7,
+                views: 234
+            },
+        ];
+
+        const browseItems = [
+            {
+                id: 1,
+                item: "2023 Porsche 911 Turbo S",
+                currentBid: "$280K",
+                timeLeft: "2d 15h",
+                image: "/placeholder.svg?height=200&width=300",
+                category: "Luxury Cars",
+                bidders: 23
+            },
+            {
+                id: 2,
+                item: "Richard Mille RM 27-04",
+                currentBid: "$1.2M",
+                timeLeft: "5h 30m",
+                image: "/placeholder.svg?height=200&width=300",
+                category: "Watches",
+                bidders: 41
+            },
+            {
+                id: 3,
+                item: "Hermès Kelly Bag",
+                currentBid: "$35K",
+                timeLeft: "1d 3h",
+                image: "/placeholder.svg?height=200&width=300",
+                category: "Accessories",
+                bidders: 18
+            },
+            {
+                id: 4,
+                item: "Rolex Submariner",
+                currentBid: "$15K",
+                timeLeft: "4d 2h",
+                image: "/placeholder.svg?height=200&width=300",
+                category: "Watches",
+                bidders: 29
+            },
+        ];
+
+        // State
+        let activeTab = "dashboard";
+        let currentDashboard = "minimal";
+
+        // DOM Elements
+        const minimalDashboard = document.getElementById('minimal-dashboard');
+        const toggleMinimal = document.getElementById('toggle-minimal');
+        const toggleLuxury = document.getElementById('toggle-luxury');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMinimalBids();
+            renderAllBids();
+            renderMessages();
+            renderMyListings();
+            renderBrowseItems();
+            renderWatchlist();
+            setupEventListeners();
+        });
+
+        // Event Listeners
+        function setupEventListeners() {
+            // Dashboard toggle
+            toggleMinimal.addEventListener('click', () => switchDashboard('minimal'));
+            toggleLuxury.addEventListener('click', () => switchDashboard('luxury'));
+
+            // Navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    const tab = e.currentTarget.dataset.tab;
+                    setActiveTab(tab);
+                });
+            });
+
+            // Auction buttons
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('bid-now-btn')) {
+                    handleBidNow(e.target.dataset.itemId);
+                }
+                if (e.target.classList.contains('view-details-btn')) {
+                    handleViewDetails(e.target.dataset.itemId);
+                }
+                if (e.target.classList.contains('message-item')) {
+                    handleMessageClick(e.target.dataset.messageId);
+                }
+            });
+
+            // Sell form
+            document.getElementById('sell-form').addEventListener('submit', handleSellSubmit);
+        }
+
+        // Dashboard switching
+        function switchDashboard(type) {
+            currentDashboard = type;
+            
+            if (type === 'minimal') {
+                toggleMinimal.classList.add('bg-white/10', 'text-white');
+                toggleMinimal.classList.remove('text-white/60');
+                toggleLuxury.classList.remove('bg-white/10', 'text-white');
+                toggleLuxury.classList.add('text-white/60');
+            }
+        }
+
+        // Navigation
+        function setActiveTab(tab) {
+            activeTab = tab;
+            
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                item.classList.add('text-white/60');
+            });
+            
+            document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+            document.querySelector(`[data-tab="${tab}"]`).classList.remove('text-white/60');
+
+            // Hide all content sections
+            document.querySelectorAll('[id$="-content"]').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show active content
+            const contentId = tab === 'dashboard' ? 'dashboard-content' : `${tab}-content`;
+            document.getElementById(contentId).classList.remove('hidden');
+
+            // Update page title and stats
+            updatePageHeader(tab);
+        }
+
+        function updatePageHeader(tab) {
+            const pageTitle = document.getElementById('page-title');
+            const pageStats = document.getElementById('page-stats');
+            
+            const headers = {
+                dashboard: {
+                    title: "Dashboard",
+                    stats: ["12 Active Bids", "47 Items Bought", "87% Win Rate"]
+                },
+                bids: {
+                    title: "My Bids",
+                    stats: ["6 Total Bids", "2 Winning", "1 Recently Won"]
+                },
+                messages: {
+                    title: "Messages",
+                    stats: ["4 Total Messages", "2 Unread", "Last: 2h ago"]
+                },
+                sell: {
+                    title: "Sell Items",
+                    stats: ["2 Active Listings", "$228K Total Value", "19 Total Bidders"]
+                },
+                browse: {
+                    title: "Browse Auctions",
+                    stats: ["156 Active Auctions", "23 Ending Soon", "4 Categories"]
+                },
+                watchlist: {
+                    title: "Watchlist",
+                    stats: ["8 Watched Items", "3 New Bids", "2 Ending Soon"]
+                },
+                settings: {
+                    title: "Settings",
+                    stats: ["Account Verified", "VIP Member", "Last Login: Today"]
+                }
+            };
+
+            const header = headers[tab] || headers.dashboard;
+            pageTitle.textContent = header.title;
+            pageStats.innerHTML = header.stats.map(stat => `<span>${stat}</span>`).join('');
+        }
+
+        // Render functions
+        function renderMinimalBids() {
+            const container = document.getElementById('minimal-bids');
+            container.innerHTML = recentBids.map(bid => `
+                <div class="bid-card border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300">
+                    <div class="flex items-start justify-between mb-6">
+                        <h3 class="text-xl font-medium">${bid.item}</h3>
+                        <div class="text-right">
+                            <div class="text-sm font-medium mb-1 ${getStatusClass(bid.status)}">
+                                ${bid.status}
+                            </div>
+                            <div class="text-white/60 text-sm">${bid.timeLeft}</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-12 mb-8">
+                        <div>
+                            <div class="text-white/60 text-sm mb-2">Your Bid</div>
+                            <div class="text-2xl font-light">${bid.yourBid}</div>
+                        </div>
+                        <div>
+                            <div class="text-white/60 text-sm mb-2">Current Bid</div>
+                            <div class="text-2xl font-light">${bid.currentBid}</div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button class="auction-btn bid-now-btn px-8 py-3 bg-white text-black rounded-xl font-medium hover:bg-white/90 transition-colors" data-item-id="${bid.id}">
+                            Increase Bid
+                        </button>
+                        <button class="auction-btn view-details-btn px-8 py-3 text-white/80 hover:text-white transition-colors" data-item-id="${bid.id}">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderAllBids() {
+            const container = document.getElementById('all-bids');
+            container.innerHTML = allBids.map(bid => `
+                <div class="bid-card border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all duration-300">
+                    <div class="flex items-center gap-6">
+                        <img src="${bid.image}" alt="${bid.item}" class="w-24 h-18 object-cover rounded-lg" />
+                        <div class="flex-1">
+                            <h3 class="text-lg font-medium mb-2">${bid.item}</h3>
+                            <div class="flex items-center gap-4 text-sm text-white/60 mb-3">
+                                <span>${bid.category}</span>
+                                <span>${bid.bidders} bidders</span>
+                            </div>
+                            <div class="grid grid-cols-3 gap-6">
+                                <div>
+                                    <div class="text-white/60 text-xs mb-1">Your Bid</div>
+                                    <div class="font-semibold">${bid.yourBid}</div>
+                                </div>
+                                <div>
+                                    <div class="text-white/60 text-xs mb-1">Current Bid</div>
+                                    <div class="font-semibold">${bid.currentBid}</div>
+                                </div>
+                                <div>
+                                    <div class="text-white/60 text-xs mb-1">Status</div>
+                                    <div class="font-semibold ${getStatusClass(bid.status)}">${bid.status}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm text-white/60 mb-2">${bid.timeLeft}</div>
+                            ${bid.status === 'winning' || bid.status === 'outbid' ? 
+                                `<button class="auction-btn bid-now-btn px-4 py-2 bg-white text-black rounded-lg text-sm font-medium hover:bg-white/90 transition-colors" data-item-id="${bid.id}">
+                                    Increase Bid
+                                </button>` : 
+                                `<span class="px-4 py-2 bg-white/10 rounded-lg text-sm font-medium">${bid.status === 'won' ? 'Won' : 'Lost'}</span>`
+                            }
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderMessages() {
+            const container = document.getElementById('messages-list');
+            container.innerHTML = messages.map(message => `
+                <div class="message-item ${message.unread ? 'unread' : ''} p-4 rounded-lg cursor-pointer" data-message-id="${message.id}">
+                    <div class="flex items-start justify-between mb-2">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                                ${getMessageIcon(message.type)}
+                            </div>
+                            <div>
+                                <div class="font-semibold">${message.from}</div>
+                                <div class="text-sm text-white/60">${message.time}</div>
+                            </div>
+                        </div>
+                        ${message.unread ? '<div class="w-3 h-3 bg-blue-400 rounded-full"></div>' : ''}
+                    </div>
+                    <h4 class="font-medium mb-1">${message.subject}</h4>
+                    <p class="text-sm text-white/70">${message.preview}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderMyListings() {
+            const container = document.getElementById('my-listings');
+            container.innerHTML = myListings.map(listing => `
+                <div class="border border-white/10 rounded-lg p-4 hover:border-white/20 transition-all duration-300">
+                    <h4 class="font-semibold mb-2">${listing.item}</h4>
+                    <div class="grid grid-cols-2 gap-4 text-sm mb-3">
+                        <div>
+                            <span class="text-white/60">Current Bid:</span>
+                            <span class="font-semibold ml-2">${listing.currentBid}</span>
+                        </div>
+                        <div>
+                            <span class="text-white/60">Time Left:</span>
+                            <span class="font-semibold ml-2">${listing.timeLeft}</span>
+                        </div>
+                        <div>
+                            <span class="text-white/60">Bidders:</span>
+                            <span class="font-semibold ml-2">${listing.bidders}</span>
+                        </div>
+                        <div>
+                            <span class="text-white/60">Views:</span>
+                            <span class="font-semibold ml-2">${listing.views}</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="px-3 py-1 bg-white/10 rounded text-xs font-medium hover:bg-white/20 transition-colors">
+                            Edit
+                        </button>
+                        <button class="px-3 py-1 bg-red-500/20 text-red-400 rounded text-xs font-medium hover:bg-red-500/30 transition-colors">
+                            End Early
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderBrowseItems() {
+            const container = document.getElementById('browse-items');
+            container.innerHTML = browseItems.map(item => `
+                <div class="bid-card border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300">
+                    <img src="${item.image}" alt="${item.item}" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-semibold mb-2">${item.item}</h3>
+                        <div class="flex items-center gap-3 text-sm text-white/60 mb-4">
+                            <span>${item.category}</span>
+                            <span>${item.bidders} bidders</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <div class="text-white/60 text-sm">Current Bid</div>
+                                <div class="text-xl font-semibold">${item.currentBid}</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-white/60 text-sm">Time Left</div>
+                                <div class="font-semibold">${item.timeLeft}</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="auction-btn bid-now-btn flex-1 py-2 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-colors" data-item-id="${item.id}">
+                                Place Bid
+                            </button>
+                            <button class="auction-btn px-4 py-2 bg-white/10 rounded-lg font-medium hover:bg-white/20 transition-colors">
+                                ♡
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderWatchlist() {
+            const container = document.getElementById('watchlist-items');
+            container.innerHTML = browseItems.slice(0, 3).map(item => `
+                <div class="bid-card border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all duration-300">
+                    <div class="flex items-center gap-6">
+                        <img src="${item.image}" alt="${item.item}" class="w-24 h-18 object-cover rounded-lg" />
+                        <div class="flex-1">
+                            <h3 class="text-lg font-medium mb-2">${item.item}</h3>
+                            <div class="flex items-center gap-4 text-sm text-white/60 mb-3">
+                                <span>${item.category}</span>
+                                <span>${item.bidders} bidders</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <div class="text-white/60 text-xs mb-1">Current Bid</div>
+                                    <div class="font-semibold">${item.currentBid}</div>
+                                </div>
+                                <div>
+                                    <div class="text-white/60 text-xs mb-1">Time Left</div>
+                                    <div class="font-semibold">${item.timeLeft}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button class="auction-btn bid-now-btn px-6 py-2 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-colors" data-item-id="${item.id}">
+                                Bid Now
+                            </button>
+                            <button class="auction-btn px-6 py-2 bg-red-500/20 text-red-400 rounded-lg font-medium hover:bg-red-500/30 transition-colors">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Helper functions
+        function getStatusClass(status) {
+            switch(status) {
+                case 'winning': return 'status-winning';
+                case 'outbid': return 'status-outbid';
+                case 'won': return 'status-winning';
+                case 'lost': return 'status-outbid';
+                case 'active': return 'status-active';
+                case 'sold': return 'status-sold';
+                default: return '';
+            }
+        }
+
+        function getMessageIcon(type) {
+            switch(type) {
+                case 'success': return '✅';
+                case 'warning': return '⚠️';
+                case 'info': return 'ℹ️';
+                default: return '📧';
+            }
+        }
+
+        // Action handlers
+        function handleBidNow(itemId) {
+            const item = [...recentBids, ...browseItems].find(bid => bid.id == itemId);
+            console.log('Bid Now clicked for:', item?.item);
+            alert(`Placing bid on: ${item?.item}`);
+        }
+
+        function handleViewDetails(itemId) {
+            const item = recentBids.find(bid => bid.id == itemId);
+            console.log('View Details clicked for:', item?.item);
+            alert(`Viewing details for: ${item?.item}`);
+        }
+
+        function handleMessageClick(messageId) {
+            const message = messages.find(msg => msg.id == messageId);
+            if (message && message.unread) {
+                message.unread = false;
+                renderMessages();
+            }
+            console.log('Message clicked:', message?.subject);
+        }
+
+        function handleSellSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            console.log('Sell form submitted');
+            alert('Item listed successfully! It will appear in your active listings.');
+            e.target.reset();
+        }
+    </script>
+
+</body>
+</html>
